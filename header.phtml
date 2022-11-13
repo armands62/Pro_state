@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -7,21 +10,24 @@
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex Sans KR&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="css/main.css">
-    <title>ProState Bank</title>
+    <title>Pro State Bank</title>
 </head>
 <body>
 <header>
-    <div id="logo-button">
-        <a href="index.php" class="logo">Pro State Bank</a>
-    </div>
-    <div id="buttons">
+    <a href="index.php" class="logo"><img src="images/logo-transparent.png" alt="logo" class="logo-img"/></a>
+    <nav>
         <a href="profile.php" class="button">Profile</a>
         <a href="cards.php" class="button">Cards</a>
         <a href="money_transfer.php" class="button">Money transfer</a>
         <a href="history.php" class="button">History</a>
         <a href="fiscles.php" class="button">Fiscleees!</a>
-        <!-- no stress armand, safixos -->
-        <a href="login.php" class="log">Sign In</a>
-        <a href="logout.php" class="log">Sign Out</a>
-    </div>
+        <?php
+        if(empty($_SESSION["logged"])) {
+            echo "<a href='login.php' class='button auth-btn'>Autorizēties</a>";
+            echo "<a href='signup.php' class='button'>Reģistrēties</a>";
+        } else {
+            echo "<a href='logout.php' class='button auth-btn'>Iziet</a>";
+        }
+        ?>
+    </nav>
 </header>
