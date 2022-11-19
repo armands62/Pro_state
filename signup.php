@@ -30,6 +30,10 @@ if(!empty($_SESSION["logged"])) {
             <label for="surname">Uzvārds</label>
             <input type="text" name="surname" placeholder="Uzvārds" id="surname" required>
 
+            <label for="soc-num-first">Personas kods</label>
+            <input type="text" pattern="\d*" maxlength="6" name="soc-num-first" placeholder="000000" id="soc-num-first" required>
+            <input type="text" pattern="\d*" maxlength="5" name="soc-num-last" placeholder="00000" id="soc-num-last" required>
+
             <label for="birthday">Dzimšanas datums</label>
             <input type="date" name="birthday" id="birthday" required>
 

@@ -1,34 +1,38 @@
 <?php
 include_once("header.phtml");
+if(empty($_SESSION['logged'])) {
+    header("Location: login.php");
+    exit();
+}
+include_once("userinfo.php");
 ?>
 
 
 <div class="main-content">
     <div class="profile-info-container">
-        <img src="images/moneyy.png" alt="mt_image" class="image pig-image" width="350px" height="350px">
+        <div class="user-info-container">
+            <img src="images/avatar.png" class="user-avatar"/>
+            <ul>
+                <?php
+                $user_info = get_profile($_SESSION['id']);
+
+                echo '<li>Vārds: ' . $user_info['name'] . '</li>';
+                echo '<li>Uzvārds: ' . $user_info['surname'] . '</li>';
+                echo '<li>E-pasts: ' . $user_info['email'] . '</li>';
+                ?>
+            </ul>
+        </div>
         <div class="info-outer-container">
             <div class="info-inner-container">
                 <!-- Jāpafixo -->
-                <h3>Accounts</h3>
+                <h3>Konti</h3>
                 <ul class="account-info-header">
-                    <li>Main Account</li>
-                    <li>Balance</li>
-                    <li>Credit</li>
-                    <li>Reserved</li>
-                    <li>Available</li>
+                    <li>Konta numurs</li>
+                    <li>Bilance</li>
+                    <li>Kredīts</li>
+                    <li>Rezervēts</li>
+                    <li>Pieejams</li>
                 </ul>
-                <!--
-                <table>
-                    <h3>Accounts</h3>
-                    <tr>
-                        <th>Main Account</th>
-                        <th>Balance</th>
-                        <th>Credit</th>
-                        <th>Reserved</th>
-                        <th>Available</th>
-                    </tr>
-                </table>
-                -->
             </div>
         </div>
     </div>
