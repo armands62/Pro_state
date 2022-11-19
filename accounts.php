@@ -2,7 +2,7 @@
 include_once("header.phtml");
 ?>
     <main>
-        <p>cards page</p>
+        <p>accounts page</p>
     </main>
 <?php
 include_once("footer.phtml");

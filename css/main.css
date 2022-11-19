@@ -137,7 +137,7 @@ footer > p, footer > a {
 .info-outer-container {
     border: #4b4b4b 1px solid;
     border-radius: 0.6rem;
-    padding: 1%;
+    padding: 10px;
     background-color: #BCCDD6;
     align-items: center;
     margin: 2%;
@@ -163,11 +163,10 @@ th {
     font-size: 19px;
 }
 
-h3 {
-    padding-left: 20px;
+.info-inner-container > h3 {
+    padding-left: 15px;
     font-style: normal;
     font-weight: 400;
-    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 .account-info-header {
     display: flex;
@@ -181,4 +180,19 @@ h3 {
 }
 .account-info-header > li:not(:last-child) {
     border-right: 1px solid black;
+}
+.user-info-container {
+    display: flex;
+    margin: 3%;
+    padding: 1%;
+    background-color: #D0D9DE;
+    width: 30%;
+}
+.user-avatar {
+    object-fit: fill;
+    width: 110px;
+    height: 95px;
+}
+.user-info-container > ul {
+    list-style: none;
 }
