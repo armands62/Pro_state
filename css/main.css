@@ -125,6 +125,8 @@ footer > p, footer > a {
 .profile-info-container {
     display: flex;
     justify-content: space-evenly;
+    width: 95%;
+    margin: 2% auto auto;
 }
 .pig-image {
     opacity: 0.3;
@@ -134,40 +136,6 @@ footer > p, footer > a {
     margin: 5%;
 }
 
-.info-outer-container {
-    border: #4b4b4b 1px solid;
-    border-radius: 0.6rem;
-    padding: 10px;
-    background-color: #BCCDD6;
-    align-items: center;
-    margin: 2%;
-    width: 60%;
-}
-
-.info-inner-container {
-    border: #4b4b4b 1px solid;
-    border-radius: 0.6rem;
-    height: 100%;
-    background-color: #D0D9DE;
-    padding: 1%;
-}
-
-table {
-    border-top: #616669 1px solid;
-    border-collapse: collapse;
-    margin: 5px;
-}
-
-th {
-    width: 120px;
-    font-size: 19px;
-}
-
-.info-inner-container > h3 {
-    padding-left: 15px;
-    font-style: normal;
-    font-weight: 400;
-}
 .account-info-header {
     display: flex;
     list-style: none;
@@ -183,10 +151,11 @@ th {
 }
 .user-info-container {
     display: flex;
-    margin: 3%;
+    margin-right: 3%;
     padding: 1%;
-    background-color: #D0D9DE;
+    background-color: #f1f1f1;
     width: 30%;
+    height: 20%;
 }
 .user-avatar {
     object-fit: fill;
@@ -195,4 +164,45 @@ th {
 }
 .user-info-container > ul {
     list-style: none;
+}
+/* ACCOUNT LIST TABLE */
+.accounts-main {
+    margin-top: 3%;
+}
+.account-list-container {
+    width: 80%;
+    margin: auto;
+}
+.account-list-table {
+    width: 100%;
+    border-top: #616669 1px solid;
+    border-collapse: collapse;
+    font-weight: lighter;
+}
+.account-list-table > tbody > tr, .account-list-table > tbody > tr > th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+}
+.account-list-table > tbody > td {
+    text-align: center;
+}
+.account-list-table > tbody > tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+.acc-total, .acc-list-thead {
+    background-color: #dddddd;
+    border: 1px solid #dddddd;
+}
+.acc-list-thead {
+    font-weight: bold;
+    font-size: 18px;
+}
+.right {
+    text-align: right;
+}
+.center {
+    text-align: center;
+}
+.left {
+    text-align: left;
 }

@@ -23,7 +23,7 @@ if(!empty($_SESSION["logged"])) {
             unset($_SESSION["login_err_msg"]);
         }
         ?>
-        <form action="register.php" method="POST">
+        <form action="backend/register.php" method="POST">
             <label for="name">Vārds</label>
             <input type="text" name="name" placeholder="Vārds" id="name" required>
 

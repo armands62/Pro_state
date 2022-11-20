@@ -1,6 +1,6 @@
 <?php
-include_once("header.phtml");
+include_once("blocks/header.phtml");
 ?>
 <p>money transfer page</p>
 <?php
-include_once("footer.phtml");
+include_once("blocks/footer.phtml");

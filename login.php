@@ -25,7 +25,7 @@ if(!empty($_SESSION["logged"])) {
             unset($_SESSION["login_err_msg"]);
         }
         ?>
-        <form action="authenticate.php" method="POST">
+        <form action="backend/authenticate.php" method="POST">
             <label for="email">E-pasta adrese</label>
             <input type="text" name="email" placeholder="E-pasts" id="email" required>
 

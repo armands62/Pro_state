@@ -1,5 +1,5 @@
 <?php
-include_once("header.phtml");
+include_once("blocks/header.phtml");
 ?>
 <main class="home-main">
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias, delectus distinctio eius ex, facere fugiat id illo iusto, maiores modi omnis provident quaerat sapiente suscipit tenetur unde vero voluptatum?</p>
@@ -9,4 +9,4 @@ include_once("header.phtml");
 </main>
 <script src="js/main_img.js"></script>
 <?php
-include_once("footer.phtml");
+include_once("blocks/footer.phtml");
