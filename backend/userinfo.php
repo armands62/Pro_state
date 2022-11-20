@@ -31,20 +31,18 @@ function get_accounts($id) {
     $dbconn = new dbconn();
     $con = $dbconn->db();
 
-    if($stmt = $con->prepare('SELECT `number`, `money` FROM `account` WHERE `id` = ?;')) {
+    if($stmt = $con->prepare('SELECT * FROM `account` WHERE `user_id` = ?;')) {
         $stmt->bind_param('i', $id);
         $stmt->execute();
-        $stmt->store_result();
 
-        $con->close();
-
-        if($stmt->num_rows > 0) {
-            $account_info = [
-                'number' => '',
-                'money' => '',
-            ];
-            $stmt->bind_result($account_info['number'], $account_info['money']);
-            $stmt->fetch();
+        $result = $stmt->get_result();
+        if($result->num_rows > 0) {
+            $account_info = [];
+            $i = 0;
+            while ($row = $result->fetch_array(MYSQLI_NUM)) {
+                $account_info[$i] = $row;
+                $i++;
+            }
             return $account_info;
         }
         else {

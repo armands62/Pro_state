@@ -1,8 +1,16 @@
 <?php
-include_once("header.phtml");
+include_once("blocks/header.phtml");
+if(empty($_SESSION['logged'])) {
+    header("Location: login.php");
+    exit();
+}
+include_once("backend/userinfo.php");
 ?>
-    <main>
-        <p>accounts page</p>
+    <main class="accounts-main">
+        <div class="account-list-container">
+            <?php include_once('blocks/account_table.php'); ?>
+            <a href="add_account.php">Pievienot kontu</a>
+        </div>
     </main>
 <?php
-include_once("footer.phtml");
+include_once("blocks/footer.phtml");

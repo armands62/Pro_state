@@ -1,8 +1,8 @@
 <?php
-include_once("header.phtml");
+include_once("blocks/header.phtml");
 ?>
     <main>
         <p>fiscles page</p>
     </main>
 <?php
-include_once("footer.phtml");
+include_once("blocks/footer.phtml");

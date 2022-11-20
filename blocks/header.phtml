@@ -8,13 +8,13 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex Sans KR&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="css/main.css">
     <title>Pro State Bank</title>
 </head>
 <body>
 <header>
-    <a href="index.php" class="logo"><img src="images/logo-transparent.png" alt="logo" class="logo-img"/></a>
+    <a href="../index.php" class="logo"><img src="images/logo-transparent.png" alt="logo" class="logo-img"/></a>
     <nav>
         <a href="profile.php" class="button">Profile</a>
         <a href="accounts.php" class="button">Accounts</a>
@@ -26,7 +26,7 @@ session_start();
             echo "<a href='login.php' class='button auth-btn'>Autorizēties</a>";
             echo "<a href='signup.php' class='button'>Reģistrēties</a>";
         } else {
-            echo "<a href='logout.php' class='button auth-btn'>Iziet</a>";
+            echo "<a href='backend/logout.php' class='button auth-btn'>Iziet</a>";
         }
         ?>
     </nav>

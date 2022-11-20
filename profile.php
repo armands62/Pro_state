@@ -1,10 +1,10 @@
 <?php
-include_once("header.phtml");
+include_once("blocks/header.phtml");
 if(empty($_SESSION['logged'])) {
     header("Location: login.php");
     exit();
 }
-include_once("userinfo.php");
+include_once("backend/userinfo.php");
 ?>
 
 
@@ -22,21 +22,12 @@ include_once("userinfo.php");
                 ?>
             </ul>
         </div>
-        <div class="info-outer-container">
-            <div class="info-inner-container">
-                <!-- Jāpafixo -->
-                <h3>Konti</h3>
-                <ul class="account-info-header">
-                    <li>Konta numurs</li>
-                    <li>Bilance</li>
-                    <li>Kredīts</li>
-                    <li>Rezervēts</li>
-                    <li>Pieejams</li>
-                </ul>
-            </div>
+        <div class="account-list-container">
+            <?php include_once('blocks/account_table.php'); ?>
         </div>
     </div>
+
 </div>
 
 <?php
-include_once("footer.phtml");
+include_once("blocks/footer.phtml");
