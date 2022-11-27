@@ -102,6 +102,6 @@ if ($stmt = $con->prepare('INSERT INTO transaction_history (account_from, accoun
     $stmt->bind_param('iidss', $account_from, $account_to, $_POST['amount'], $_POST['description'], $date);
     $stmt->execute();
     $stmt->close();
-    header('Location: ../money_transfer.php');
+    header('Location: ../history.php');
     exit();
 }
