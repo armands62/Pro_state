@@ -206,3 +206,6 @@ footer > p, footer > a {
 .left {
     text-align: left;
 }
+textarea {
+    resize: none;
+}
