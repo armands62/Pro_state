@@ -29,6 +29,11 @@ if (preg_match('/(LV[0-9]{2}PRST[0-9]{13})/', $_POST['account-to']) == 0 || strl
     header('Location: ../money_transfer.php');
     exit();
 }
+if ($_POST['account-from'] == $_POST['account-to']) {
+    $_SESSION['login_err_msg'] = 'Kontu numuri nedrīkst sakrist!';
+    header('Location: ../money_transfer.php');
+    exit();
+}
 $account_to = 0;
 if ($stmt = $con->prepare('SELECT id FROM account WHERE number = ?')) {
     $stmt->bind_param('s', $_POST['account-to']);
