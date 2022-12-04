@@ -7,7 +7,7 @@ if(empty($_SESSION['logged']) || empty($_GET['id'])) {
 include_once("backend/userinfo.php");
 $account_info = get_account($_GET['id']);
 if($_SESSION['id'] != $account_info['user_id']) {
-    header("Location: login.php");
+    header("Location: accounts.php");
     exit();
 }
 ?>

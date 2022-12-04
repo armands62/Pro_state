@@ -5,6 +5,12 @@ if(empty($_SESSION['logged'])) {
     exit();
 }
 include_once("backend/userinfo.php");
+
+$account_info = get_account($_GET['id']);
+if($_SESSION['id'] != $account_info['user_id']) {
+    header("Location: accounts.php");
+    exit();
+}
 ?>
     <main>
         <?php
