@@ -6,7 +6,7 @@ if(!empty($_SESSION["logged"])) {
 ?>
 <!doctype html>
 <html lang="en">
-<header>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -14,7 +14,7 @@ if(!empty($_SESSION["logged"])) {
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href="css/main.css" type="text/css" rel="stylesheet">
     <title>Pro State Bank</title>
-</header>
+</head>
 <body>
 <main class="login-main">
     <div class="login-container">

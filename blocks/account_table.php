@@ -2,9 +2,9 @@
     <thead class="acc-list-thead">
     <tr>
         <th>Norēķinu konti</th>
-        <th>Konta atlikums</th>
-        <th>Rezervēts</th>
         <th>Pieejamais atlikums</th>
+        <th>Rezervēts</th>
+        <th>Kopējais atlikums</th>
         <th></th>
     </tr>
     </thead>
@@ -18,9 +18,9 @@
         } else {
             foreach ($account_info as &$value) {
                 echo '<tr>';
-                echo '<th class="left">' . $value[1] . ' ' . $value[2] . '</th>';
-                echo '<th class="right">' . $value[4] . '</th>';
-                echo '<th class="right">' . $value[5] . '</th>';
+                echo "<th class=\"left\"><a href='./view_account.php?id={$value[0]}'>{$value[1]} {$value[2]}</a></th>";
+                echo "<th class=\"right\">{$value[4]}</th>";
+                echo "<th class=\"right\">{$value[5]}</th>";
                 echo '<th class="right">' . $value[4] + $value[5] . '</th>';
                 echo '<th class="center">FISC</th>';
                 echo '<tr>';

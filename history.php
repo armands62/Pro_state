@@ -6,7 +6,7 @@ if(empty($_SESSION['logged'])) {
 }
 include_once("backend/userinfo.php");
 ?>
-<script src="js/money_transfer_ajax.js"></script>
+<script src="js/money_transfer.js"></script>
 <main>
     <label for="account-id">Izvadīt konta maksājumu informāciju:</label>
     <select id="account-id" name="account-id">
