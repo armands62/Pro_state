@@ -18,11 +18,12 @@
     if($transaction_info == '') {
         echo '<td>Nav veiktu maksājumu!</td>';
     } else {
+        $i = 0;
         foreach ($transaction_info as $value) {
             $account_from_info = get_account($value[1]);
             $account_to_info = get_account($value[2]);
-            if($account_info[$_POST['account-id']][0] == $value[1]) {
-                echo "<tr><th class=\"left\">{$account_from_info['number']} {$account_from_info['name']} --> {$account_to_info['number']} ({$account_from_info['user_name']} {$account_from_info['user_surname']})</th>";
+            if($account_info[$_POST['account-id']][$i] == $value[1]) {
+                echo "<tr><th class=\"left\">{$account_from_info['number']} {$account_from_info['name']} --> {$account_to_info['number']} ({$account_to_info['user_name']} {$account_to_info['user_surname']})</th>";
             }
             else {
                 echo "<tr><th class=\"left\">{$account_to_info['number']} {$account_to_info['name']} <-- {$account_from_info['number']} ({$account_from_info['user_name']} {$account_from_info['user_surname']})</th>";
@@ -36,6 +37,7 @@
                 echo "<th class=\"right\" style=\"color: green\">+$value[3]</th>";
             }
             echo '<th class="center">FISC</th></tr>';
+            $i++;
         }
     }
     ?>

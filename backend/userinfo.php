@@ -74,7 +74,7 @@ function get_account($account_id) {
     $dbconn = new dbconn();
     $con = $dbconn->db();
 
-    if($stmt = $con->prepare('SELECT `number`, `name`, `user_id` FROM `account` WHERE `id` = ?;')) {
+    if($stmt = $con->prepare('SELECT `number`, `name`, `user_id`, `daily_limit`, `monthly_limit` FROM `account` WHERE `id` = ?;')) {
         $stmt->bind_param('i', $account_id);
         $stmt->execute();
         $stmt->store_result();
@@ -86,8 +86,10 @@ function get_account($account_id) {
                 'user_id' => 0,
                 'user_name' => '',
                 'user_surname' => '',
+                'daily_limit' => 0,
+                'monthly_limit' => 0,
             ];
-            $stmt->bind_result($account_info['number'], $account_info['name'], $account_info['user_id']);
+            $stmt->bind_result($account_info['number'], $account_info['name'], $account_info['user_id'], $account_info['daily_limit'], $account_info['monthly_limit']);
             $stmt->fetch();
 
             $profile_info = get_profile($account_info['user_id']);
@@ -100,4 +102,26 @@ function get_account($account_id) {
         }
     }
     return '';
+}
+
+/**
+ * Used to receive the relative account identification of a user
+ * This is necessary for the transaction table, as only relative id is requested
+ * @param $account_id
+ * Account identification
+ * @param $user_id
+ * User identification
+ * @return int Relative account identification
+ */
+function get_relative_account_id($account_id, $user_id)
+{
+    $account_info = get_accounts($user_id);
+    $i = 0;
+    foreach($account_info as $value) {
+        if($value[0] == $account_id) {
+            return $i;
+        }
+        else $i++;
+    }
+    return -1;
 }
