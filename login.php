@@ -25,17 +25,20 @@ if(!empty($_SESSION["logged"])) {
             unset($_SESSION["login_err_msg"]);
         }
         ?>
-        <form action="backend/authenticate.php" method="POST">
+        <form action="backend/authenticate.php" method="POST" class="login-page-authenticate">
             <label for="email">E-pasta adrese</label>
-            <input type="text" name="email" placeholder="E-pasts" id="email" required>
+            <input type="text" name="email" placeholder="E-pasts" id="login-email" required>
 
             <label for="password">Parole</label>
-            <input type="password" name="password" placeholder="Parole" id="password" required>
+            <input type="password" name="password" placeholder="Parole" id="login-password" required>
             <input type="submit" value="Log in" id="submit">
         </form>
-        <p><a href="signup.php">Vai jūs vēl neesat reģistrējies? Reģistrējieties šeit!</a></p>
-        <p><a href="index.php">Atgriezties galvenajā lapā</a></p>
+        <p><a href="signup.php" class="to-registration">Vai jūs vēl neesat reģistrējies? Reģistrējieties šeit!</a></p>
+        <p><a href="index.php" class="to-homepage">Atgriezties galvenajā lapā</a></p>
     </div>
 </main>
 </body>
 </html>
+
+<?php
+include_once("blocks/footer.phtml");

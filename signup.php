@@ -14,8 +14,8 @@ if(!empty($_SESSION["logged"])) {
     <title>Pro State Bank</title>
 </head>
 <body>
-<main class="login-main">
-    <div class="login-container">
+<main class="signup-main">
+    <div class="signup-container">
         <h2>Reģistrēties</h2>
         <?php
         if(!empty($_SESSION["login_err_msg"])){

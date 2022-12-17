@@ -2,7 +2,7 @@
 include_once("blocks/header.phtml");
 ?>
 <main class="home-main">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias, delectus distinctio eius ex, facere fugiat id illo iusto, maiores modi omnis provident quaerat sapiente suscipit tenetur unde vero voluptatum?</p>
+    <p class="phrase">Pro State Bank: One of the most modernized virtual banks in the world!</p>
     <div class="main-img-overflow">
         <img src="images/main-img.png" alt="main_image" class="main-img" id="main-img">
     </div>
