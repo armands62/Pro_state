@@ -9,7 +9,7 @@ include_once("backend/userinfo.php");
     <main class="accounts-main">
         <div class="account-list-container">
             <?php include_once('blocks/account_table.php'); ?>
-            <a href="add_account.php">Pievienot kontu</a>
+            <a href="add_account.php" class="account-add-button">Pievienot kontu</a>
         </div>
     </main>
 <?php

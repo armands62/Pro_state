@@ -7,7 +7,7 @@ if(empty($_SESSION['logged'])) {
 include_once("backend/userinfo.php");
 ?>
 
-
+<main id="profile-main">
 <div class="main-content">
     <div class="info-container">
         <div class="general-info">
@@ -24,8 +24,7 @@ include_once("backend/userinfo.php");
                 </ul>
             </div>
             <?php
-                echo "<p><a href=\"edit_profile.php?id={$_SESSION["id"]}\">Rediģēt profilu</a></p>";
-
+                echo "<p><a href=\"edit_profile.php?id={$_SESSION["id"]}\" class='profile-edit-button'>Rediģēt profilu</a></p>";
             if(!empty($_SESSION["login_err_msg"])){
                 echo "<p class='login-error'>{$_SESSION["login_err_msg"]}</p>";
                 unset($_SESSION["login_err_msg"]);
@@ -36,8 +35,8 @@ include_once("backend/userinfo.php");
             <?php include_once('blocks/account_table.php'); ?>
         </div>
     </div>
-
 </div>
+</main>
 
 <?php
 include_once("blocks/footer.phtml");
