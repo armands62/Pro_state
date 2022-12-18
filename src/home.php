@@ -7,6 +7,6 @@ include_once("blocks/header.phtml");
             <img src="./images/main-img.png" alt="main_image" class="main-img" id="main-img">
         </div>
     </main>
-    <script src="/js/main_img.js"></script>
+    <script src="/src/js/main_img.js"></script>
 <?php
 include_once("blocks/footer.phtml");

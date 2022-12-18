@@ -30,3 +30,13 @@
         ?>
     </nav>
 </header>
+<div id="session-alert">
+    <h2>Jūsu sesija drīz beigsies!</h2>
+    <p class="countdown">Līdz sesijas noilgumam palikušas <span id="countdown">0</span> sekundes!</p>
+    <?php echo "<a href=\"{$_SERVER['REQUEST_URI']}\">Atjaunot sesiju</a>"?>
+</div>
+<div id="session-expire">
+    <h2>Jūsu sesija ir beigusies!</h2>
+    <p class="countdown">Lai turpinātu darbu, nepieciešams ielogoties atkārtoti.</p>
+    <a href="/">Apstiprināt</a>
+</div>

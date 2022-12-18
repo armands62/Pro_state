@@ -34,6 +34,7 @@ if($stmt = $con->prepare('SELECT `id`, `password` FROM `user` WHERE `email` = ?;
             $_SESSION['logged'] = true;
             $_SESSION['email'] = $_POST['email'];
             $_SESSION['id'] = $id;
+            $_SESSION['last_activity'] = time();
             header('Location: /');
         }
         else {

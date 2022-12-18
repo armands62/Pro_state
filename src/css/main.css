@@ -349,4 +349,21 @@ textarea {
     font-weight: 400;
     line-height: 63px;
 }
+/* SESSION ALERT WINDOWS */
+#session-alert, #session-expire {
+    display: none;
+    text-align: center;
+    z-index: 1;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+#session-alert {
+    background: rgba(240, 200, 50, 0.5);
 
+}
+#session-expire {
+    background: rgba(255, 122, 89, .5);
+}
+#countdown {
+    color: red;
+}

@@ -6,7 +6,7 @@ RewriteCond %{REQUEST_URI} !\.css$
 RewriteCond %{REQUEST_URI} !\.png$
 RewriteCond %{REQUEST_URI} !\.jpg$
 
-RewriteBase /pro_state
+#RewriteBase /pro_state
 RewriteRule ^(.*)$ src/index.php [L]
 
 RedirectMatch ^/$ /home

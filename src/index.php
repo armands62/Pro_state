@@ -1,5 +1,13 @@
 <?php
 session_start();
+if (isset($_SESSION['last_activity'])) {
+    if (time() - $_SESSION['last_activity'] > 60) {
+        header('Location: /logout');
+    } else {
+        $_SESSION['last_activity'] = time();
+        echo '<script type="text/javascript" src="/src/js/session_expire.js"></script>';
+    }
+}
 $request_method = $_SERVER['REQUEST_METHOD'];
 $requested_url = $_SERVER['REQUEST_URI'];
 $requested_url = strtok($requested_url, '?');
