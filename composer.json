@@ -1,0 +1,14 @@
+{
+    "name": "rebuk/pro_state_demo",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Rebuk\\ProStateDemo\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "phpmailer/phpmailer": "dev-master"
+    }
+}
