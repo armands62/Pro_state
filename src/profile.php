@@ -20,6 +20,12 @@ include_once("backend/userinfo.php");
                     echo '<li>Vārds: ' . $user_info['name'] . '</li>';
                     echo '<li>Uzvārds: ' . $user_info['surname'] . '</li>';
                     echo '<li>E-pasts: ' . $user_info['email'] . '</li>';
+                    if($_SESSION['auth'] == 0) {
+                        echo '<li style="color: green">Profils ir aktivizēts!</li>';
+                    } else {
+                        echo '<li style="color: red">Profils nav aktivizēts!</li>';
+                        echo '<li><a href="/authorize">Aktivizēt kontu</a></li>';
+                    }
                     ?>
                 </ul>
             </div>

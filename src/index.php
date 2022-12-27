@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['last_activity'])) {
-    if (time() - $_SESSION['last_activity'] > 60) {
+    if (time() - $_SESSION['last_activity'] > 1200) {
         header('Location: /logout');
     } else {
         $_SESSION['last_activity'] = time();
@@ -18,12 +18,39 @@ if ($request_method == 'POST') {
     // Routing for all pages where the user must be logged in
     if ($requested_url == '/profile' || $requested_url == '/accounts' || $requested_url == '/money_transfer'
         || $requested_url == '/view_account' || $requested_url == '/history' || $requested_url == '/logout'
-        || $requested_url == '/edit_profile' || $requested_url == '/add_account' || $requested_url == '/edit_account') {
-        if (is_logged()) {
+        || $requested_url == '/edit_profile' || $requested_url == '/add_account' || $requested_url == '/edit_account'
+        || $requested_url == '/authorize' || $requested_url == '/send_auth') {
+        if (!empty($_SESSION["logged"])) {
+
+            // Links with larger priorities
+            if ($requested_url == '/profile') {
+                include 'profile.php';
+                exit();
+            }
+            if($requested_url == '/logout') {
+                include 'backend/logout.php';
+                exit();
+            }
+            if($requested_url == '/edit_profile') {
+                include 'edit_profile.php';
+                exit();
+            }
+            if($requested_url == '/send_auth') {
+                include 'backend/send_auth.php';
+                exit();
+            }
+            if($requested_url == '/authorize') {
+                include 'authorize.php';
+                exit();
+            }
+            if ($_SESSION['auth'] != 0) {
+                $_SESSION['login_err_msg'] = 'Lai piekļūtu šai lapai, ir nepieciešams aktivizēt kontu! Pārbaudiet savu e-pastu!';
+                include 'authorize.php';
+                exit();
+            }
+
+            // Regular logged in links
             switch ($requested_url) {
-                case '/profile':
-                    include 'profile.php';
-                    break;
                 case '/accounts':
                     include 'accounts.php';
                     break;
@@ -35,12 +62,6 @@ if ($request_method == 'POST') {
                     break;
                 case '/history':
                     include 'history.php';
-                    break;
-                case '/logout':
-                    include 'backend/logout.php';
-                    break;
-                case '/edit_profile':
-                    include 'edit_profile.php';
                     break;
                 case '/add_account':
                     include 'add_account.php';
@@ -54,6 +75,7 @@ if ($request_method == 'POST') {
             exit();
         } else {
             header('Location: /login');
+            exit();
         }
     }
     // Common page routes
@@ -73,6 +95,7 @@ if ($request_method == 'POST') {
         default:
             include '404.php';
     }
+    exit();
 }
 
 // Routing with POST request
@@ -106,6 +129,9 @@ function process_post_request($requested_url) {
         case '/transfer':
             include 'backend/transfer.php';
             break;
+        case '/check_auth':
+            include 'backend/check_auth.php';
+            break;
         default:
             echo('POST');
             include '404.php';
@@ -113,10 +139,3 @@ function process_post_request($requested_url) {
     }
 }
 
-function is_logged(): bool
-{
-    if(!empty($_SESSION["logged"])) {
-        return true;
-    }
-    return false;
-}

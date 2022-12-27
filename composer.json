@@ -1,10 +1,10 @@
 {
-    "name": "armands62/pro_state",
+    "name": "rebuk/pro_state_demo",
     "type": "project",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "armands62\\ProState\\": "src/"
+            "Rebuk\\ProStateDemo\\": "src/"
         }
     },
     "minimum-stability": "dev",
