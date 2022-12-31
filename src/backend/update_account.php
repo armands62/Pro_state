@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once('dbconn.php');
 $dbconn = new dbconn();
 $con = $dbconn->db();

@@ -1,6 +1,8 @@
 <?php
-session_start();
+include_once('mail.php');
 include_once('dbconn.php');
+include_once('userinfo.php');
+include_once('sendauth.php');
 $dbconn = new dbconn();
 $con = $dbconn->db();
 
@@ -89,18 +91,48 @@ if($stmt = $con->prepare('SELECT `id` FROM `user` WHERE `email` = ? OR `social_n
     $stmt->execute();
     $stmt->store_result();
 
-    if($stmt->num_rows > 0) {
+    if ($stmt->num_rows > 0) {
         $_SESSION['login_err_msg'] = 'Lietotājs ar šādu e-pasta adresi vai personas kodu jau ir reģistrēts!';
         header('Location: /signup');
         exit();
     }
+
+
     mysqli_report(MYSQLI_REPORT_ALL);
-    if($stmt = $con->prepare('INSERT INTO `user` (`name`, `surname`, `email`, `password`, `social_number`, `birth_date`, `gender`) VALUES (?, ?, ?, ?, ?, ?, ?);')) {
+    // Creating auth code
+    $auth = mt_rand(100000, 999999);
+
+    if ($stmt = $con->prepare('INSERT INTO `user` (`name`, `surname`, `email`, `password`, `social_number`, `birth_date`, `gender`, `auth`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);')) {
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $birthday = date('Y-m-d', strtotime($_POST['birthday']));
-        $stmt->bind_param('sssssss', $_POST['name'], $_POST['surname'], $_POST['email'], $password, $social_number, $birthday, $_POST['gender']);
+        $stmt->bind_param('sssssssi', $_POST['name'], $_POST['surname'], $_POST['email'], $password, $social_number, $birthday, $_POST['gender'], $auth);
         $stmt->execute();
+
+        // To get new user ID
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+        if ($stmt = $con->prepare('SELECT `id` FROM `user` WHERE `email` = ?;')) {
+            $stmt->bind_param('s', $_POST['email']);
+            $stmt->execute();
+            $stmt->store_result();
+            $id = 0;
+            $stmt->bind_result($id);
+            $stmt->fetch();
+
+            // Mailing
+            Authorization::send_auth($id);
+
+            // Starting new session
+            session_regenerate_id();
+            $_SESSION['logged'] = true;
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['id'] = $id;
+            $_SESSION['auth'] = $auth;
+            $_SESSION['last_activity'] = time();
+            header('Location: /profile');
+            exit();
+        }
+        header('Location: /login');
+        $stmt->close();
+        exit();
     }
-    header('Location: /login');
-    $stmt->close();
 }
