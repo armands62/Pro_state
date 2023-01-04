@@ -15,7 +15,7 @@ include_once("backend/userinfo.php");
         ?>
         <form action="/update_profile" method="POST">
             <?php
-            $user_info = get_profile($_SESSION['id']);
+            $user_info = UserInfo::get_profile($_SESSION['id']);
             echo "<label for=\"name\">Vārds</label>";
             echo "<input type=\"text\" name=\"name\" placeholder=\"Vārds\" value=\"{$user_info['name']}\" id=\"name\" required>";
 

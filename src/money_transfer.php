@@ -19,7 +19,7 @@ include_once("backend/userinfo.php");
         <select name="account-from" id="account-from">
             <option value="0">Izvēlēties savu kontu</option>
             <?php
-                $account_info = get_accounts($_SESSION['id']);
+                $account_info = UserInfo::get_accounts($_SESSION['id']);
                 foreach ($account_info as $value) {
                     echo "<option value='$value[1]'>$value[1] $value[2] ($value[4]$)</option>";
                 }

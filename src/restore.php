@@ -1,8 +1,3 @@
-<?php
-if(!empty($_SESSION["logged"])) {
-    header("Location: index.php");
-}
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,24 +12,20 @@ if(!empty($_SESSION["logged"])) {
 <body>
 <main class="login-main">
     <div class="login-container">
-        <h2>Ielogoties</h2>
+        <h2>Aizmirsāt paroli?</h2>
         <?php
         if(!empty($_SESSION["login_err_msg"])){
             echo "<p class='login-error'>{$_SESSION["login_err_msg"]}</p>";
             unset($_SESSION["login_err_msg"]);
         }
         ?>
-        <form action="/authenticate" method="POST" class="login-page-authenticate">
-            <label for="email">E-pasta adrese</label>
+        <form action="/send_restore" method="POST" class="login-page-authenticate">
+            <label for="login-email">E-pasta adrese</label>
             <input type="text" name="email" placeholder="E-pasts" id="login-email" required>
-
-            <label for="password">Parole</label>
-            <input type="password" name="password" placeholder="Parole" id="login-password" required>
-            <input type="submit" value="Log in" id="submit">
+            <p><a href="/" class="to-homepage">Atgriezties galvenajā lapā</a></p>
+            <p><a href="/login">Tomēr atcerējos!</a></p>
+            <input type="submit" value="Apstiprināt" id="submit">
         </form>
-        <p><a href="/restore" class="to-password-restore">Aizmirsāt paroli?</a></p>
-        <p><a href="/signup" class="to-registration">Vai jūs vēl neesat reģistrējies? Reģistrējieties šeit!</a></p>
-        <p><a href="/" class="to-homepage">Atgriezties galvenajā lapā</a></p>
     </div>
 </main>
 </body>
