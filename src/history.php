@@ -11,7 +11,7 @@ include_once("backend/userinfo.php");
     <select id="account-id" name="account-id">
         <option value="-1">Izvēlēties savu kontu</option>
         <?php
-        $account_info = get_accounts($_SESSION['id']);
+        $account_info = UserInfo::get_accounts($_SESSION['id']);
         $i = 0;
         foreach ($account_info as $value) {
             echo "<option value='$i'>$value[1] $value[2]</option>";
@@ -23,7 +23,7 @@ include_once("backend/userinfo.php");
     <div class="account-list-container" id="table-container">
         <!--<?php include_once('blocks/transaction_table.php'); ?>-->
     </div>
-    <script langauge="javascript" src="/src/js/money_transfer.js"></script>
+    <script src="/src/js/money_transfer.js"></script>
 </main>
 <?php
 include_once("blocks/footer.phtml");

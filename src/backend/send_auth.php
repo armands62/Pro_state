@@ -1,4 +1,4 @@
 <?php
-include_once('sendauth.php');
-Authorization::send_auth($_SESSION['id']);
+include_once('userinfo.php');
+UserInfo::send_auth($_SESSION['id']);
 header('Location: /authorize');

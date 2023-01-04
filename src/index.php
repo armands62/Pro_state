@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+// Session expiration check
 if (isset($_SESSION['last_activity'])) {
     if (time() - $_SESSION['last_activity'] > 1200) {
         header('Location: /logout');
@@ -8,6 +10,15 @@ if (isset($_SESSION['last_activity'])) {
         echo '<script type="text/javascript" src="/src/js/session_expire.js"></script>';
     }
 }
+
+// Password restoration code expiration check
+if (isset($_SESSION['restore_time'])) {
+    if(time() - $_SESSION['restore_time'] > 300) {
+        unset($_SESSION['restore_code']);
+        unset($_SESSION['restore_time']);
+    }
+}
+
 $request_method = $_SERVER['REQUEST_METHOD'];
 $requested_url = $_SERVER['REQUEST_URI'];
 $requested_url = strtok($requested_url, '?');
@@ -92,6 +103,31 @@ if ($request_method == 'POST') {
         case '/fiscles':
             include 'fiscles.php';
             break;
+        case '/restore':
+            include 'restore.php';
+            break;
+        case '/input_restore':
+            if(!isset($_SESSION['logged'])) {
+                if(!isset($_SESSION['restore'])) {
+                    header('Location: /login');
+                    exit();
+                }
+            }
+            include 'input_restore.php';
+            break;
+        case '/change_password':
+            if(!isset($_SESSION['logged'])) {
+                if(!isset($_SESSION['restore'])) {
+                    header('Location: /login');
+                    exit();
+                }
+                if(!isset($_SESSION['restore_correct'])) {
+                    header('Location: /login');
+                    exit();
+                }
+            }
+            include 'change_password.php';
+            break;
         default:
             include '404.php';
     }
@@ -131,6 +167,31 @@ function process_post_request($requested_url) {
             break;
         case '/check_auth':
             include 'backend/check_auth.php';
+            break;
+        case '/send_restore':
+            include 'backend/send_restore.php';
+            break;
+        case '/check_restore':
+            if(!isset($_SESSION['logged'])) {
+                if(!isset($_SESSION['restore'])) {
+                    header('Location: /login');
+                    exit();
+                }
+            }
+            include 'backend/check_restore.php';
+            break;
+        case '/update_password':
+            if(!isset($_SESSION['logged'])) {
+                if(!isset($_SESSION['restore'])) {
+                    header('Location: /login');
+                    exit();
+                }
+                if(!isset($_SESSION['restore_correct'])) {
+                    header('Location: /login');
+                    exit();
+                }
+            }
+            include 'backend/update_password.php';
             break;
         default:
             echo('POST');

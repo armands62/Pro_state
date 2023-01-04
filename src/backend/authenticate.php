@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once('dbconn.php');
-include_once('sendauth.php');
+include_once('userinfo.php');
 $dbconn = new dbconn();
 $con = $dbconn->db();
 
@@ -35,7 +35,7 @@ if($stmt = $con->prepare('SELECT `id`, `password` FROM `user` WHERE `email` = ?;
             $_SESSION['logged'] = true;
             $_SESSION['email'] = $_POST['email'];
             $_SESSION['id'] = $id;
-            $_SESSION['auth'] = Authorization::get_auth($id);
+            $_SESSION['auth'] = UserInfo::get_auth($id);
             $_SESSION['last_activity'] = time();
             header('Location: /');
         }

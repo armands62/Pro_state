@@ -5,7 +5,7 @@ if(empty($_SESSION['logged']) || empty($_GET['id'])) {
     exit();
 }
 include_once("backend/userinfo.php");
-$account_info = get_account($_GET['id']);
+$account_info = UserInfo::get_account($_GET['id']);
 if($_SESSION['id'] != $account_info['user_id']) {
     header("Location: accounts.php");
     exit();
@@ -17,7 +17,7 @@ if($_SESSION['id'] != $account_info['user_id']) {
         <div class="general-info">
             <ul class="info-text">
                 <?php
-                $account_info = get_account($_GET['id']);
+                $account_info = UserInfo::get_account($_GET['id']);
 
                 echo "<li>Konts: {$account_info['number']} {$account_info['name']}</li>";
                 echo "<li>Dienas limits: {$account_info['daily_limit']}</li>";
@@ -30,7 +30,7 @@ if($_SESSION['id'] != $account_info['user_id']) {
         </div>
         <div class="account-list-container" id="table-container">
             <?php
-            $relative_id = get_relative_account_id($_GET['id'], $_SESSION['id']);
+            $relative_id = UserInfo::get_relative_account_id($_GET['id'], $_SESSION['id']);
             echo "<script>loadDoc($relative_id)</script>" ?>
             <!--<?php include_once('blocks/transaction_table.php'); ?>-->
         </div>

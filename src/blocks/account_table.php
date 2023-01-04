@@ -11,7 +11,7 @@
     <tbody>
     <!-- PREVIEW -->
     <?php
-        $account_info = get_accounts($_SESSION['id']);
+        $account_info = UserInfo::get_accounts($_SESSION['id']);
         $total = 0;
         if($account_info == '') {
             echo '<td>Nav kontu!</td>';
@@ -21,7 +21,7 @@
                 echo "<th class=\"left\"><a href='/view_account?id={$value[0]}'>{$value[1]} {$value[2]}</a></th>";
                 echo "<th class=\"right\">{$value[4]}</th>";
                 echo "<th class=\"right\">{$value[5]}</th>";
-                echo '<th class="right">' . $value[4] + $value[5] . '</th>';
+                echo '<th class="right">' . ($value[4] + $value[5]) . '</th>';
                 echo '<th class="center">FISC</th>';
                 echo '<tr>';
                 $total += $value[4] + $value[5];

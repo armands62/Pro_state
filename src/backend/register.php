@@ -2,7 +2,6 @@
 include_once('mail.php');
 include_once('dbconn.php');
 include_once('userinfo.php');
-include_once('sendauth.php');
 $dbconn = new dbconn();
 $con = $dbconn->db();
 
@@ -119,7 +118,7 @@ if($stmt = $con->prepare('SELECT `id` FROM `user` WHERE `email` = ? OR `social_n
             $stmt->fetch();
 
             // Mailing
-            Authorization::send_auth($id);
+            UserInfo::send_auth($id);
 
             // Starting new session
             session_regenerate_id();
