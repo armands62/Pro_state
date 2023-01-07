@@ -15,7 +15,7 @@ include_once("backend/userinfo.php");
                 <img src="./images/avatar.png" class="user-avatar"/>
                 <ul class="info-text">
                     <?php
-                    $user_info = get_profile($_SESSION['id']);
+                    $user_info = UserInfo::get_profile($_SESSION['id']);
 
                     echo '<li>Vārds: ' . $user_info['name'] . '</li>';
                     echo '<li>Uzvārds: ' . $user_info['surname'] . '</li>';
@@ -36,6 +36,7 @@ include_once("backend/userinfo.php");
                 unset($_SESSION["login_err_msg"]);
             }
             ?>
+            <p><a href="/change_password" class='profile-edit-button'>Mainīt paroli</a></p>
         </div>
         <div class="account-list-container">
             <?php include_once('blocks/account_table.php'); ?>

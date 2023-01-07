@@ -6,7 +6,7 @@ if(empty($_SESSION['logged'])) {
 }
 include_once("backend/userinfo.php");
 
-$account_info = get_account($_GET['id']);
+$account_info = UserInfo::get_account($_GET['id']);
 if($_SESSION['id'] != $account_info['user_id']) {
     header("Location: accounts.php");
     exit();
@@ -19,7 +19,7 @@ if($_SESSION['id'] != $account_info['user_id']) {
                 unset($_SESSION["login_err_msg"]);
             }
 
-            $account_info = get_account($_GET['id']);
+            $account_info = UserInfo::get_account($_GET['id']);
             echo "<form action=\"/update_account?id={$_GET['id']}\" method=\"POST\">";
             echo "<label for=\"name\">Konta nosaukums</label>";
             echo "<input type=\"text\" name=\"name\" placeholder=\"Konta nosaukums\" value=\"{$account_info['name']}\" id=\"name\" required>";

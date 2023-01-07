@@ -17,7 +17,7 @@ if (!isset($_POST['account-from'], $_POST['account-to'], $_POST['amount'], $_POS
 }
 
 # Validation
-$account_info = get_accounts($_SESSION['id']);
+$account_info = UserInfo::get_accounts($_SESSION['id']);
 
 # ACCOUNT (TO)
 # - Must be formatted correctly

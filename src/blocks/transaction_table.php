@@ -10,18 +10,16 @@
     </thead>
     <tbody>
     <?php
-    #session_cache_limiter('');
-    #session_start();
     include_once("./backend/userinfo.php");
-    $account_info = get_accounts($_SESSION['id']);
-    $transaction_info = get_transaction_history($account_info[$_POST['account-id']][0]);
+    $account_info = UserInfo::get_accounts($_SESSION['id']);
+    $transaction_info = UserInfo::get_transaction_history($account_info[$_POST['account-id']][0]);
     if($transaction_info == '') {
         echo '<td>Nav veiktu maksājumu!</td>';
     } else {
         $i = 0;
         foreach ($transaction_info as $value) {
-            $account_from_info = get_account($value[1]);
-            $account_to_info = get_account($value[2]);
+            $account_from_info = UserInfo::get_account($value[1]);
+            $account_to_info = UserInfo::get_account($value[2]);
             if($account_info[$_POST['account-id']][$i] == $value[1]) {
                 echo "<tr><th class=\"left\">{$account_from_info['number']} {$account_from_info['name']} --> {$account_to_info['number']} ({$account_to_info['user_name']} {$account_to_info['user_surname']})</th>";
             }
