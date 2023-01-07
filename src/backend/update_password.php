@@ -1,5 +1,6 @@
 <?php
 include_once('dbconn.php');
+include_once('userinfo.php');
 
 $logged = false;
 
@@ -68,6 +69,8 @@ if ($stmt = $con->prepare("UPDATE `user` SET `password`= ? WHERE `id` = ?")) {
     $stmt->bind_param('si', $password, $_SESSION['id']);
     $stmt->execute();
 }
+
+UserInfo::send_activity_registry($_SESSION['id'], 'update_password', 3);
 
 if($_SESSION['restore']) {
     header("Location: /login");

@@ -367,3 +367,20 @@ textarea {
 #countdown {
     color: red;
 }
+
+.table-nav {
+    display: flex;
+}
+.table-nav > * {
+    line-height: 16px;
+    font-size: 16px;
+    margin-top: 1%;
+    margin-right: 1%;
+    color: black;
+}
+.table-nav > .end {
+    text-decoration: none;
+    pointer-events: none;
+    color: gray;
+
+}

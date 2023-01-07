@@ -1,6 +1,6 @@
 <?php
-session_start();
 include_once('dbconn.php');
+include_once('userinfo.php');
 $dbconn = new dbconn();
 $con = $dbconn->db();
 
@@ -36,6 +36,7 @@ if($stmt = $con->prepare('SELECT `id` FROM `account` WHERE `name` = ? AND `user_
             $stmt->bind_param('ssiii', $number, $_POST['name'], $_SESSION['id'], $_POST['daily-limit'], $_POST['monthly-limit']);
             $stmt->execute();
         }
+        UserInfo::send_activity_registry($_SESSION['id'], 'create_account', 2);
         header('Location: /accounts');
         $stmt->close();
     }

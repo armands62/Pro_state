@@ -102,10 +102,11 @@ if ($stmt = $con->prepare('UPDATE account SET available = available + ? WHERE id
 }
 
 if ($stmt = $con->prepare('INSERT INTO transaction_history (account_from, account_to, amount, description, date) VALUES (?, ?, ?, ?, ?);')) {
-    $date = date("Y-m-d");
+    $date = date("Y-m-d H:i:s");
     $stmt->bind_param('iidss', $account_from, $account_to, $_POST['amount'], $_POST['description'], $date);
     $stmt->execute();
     $stmt->close();
+    UserInfo::send_activity_registry($_SESSION['id'], 'transaction', 1);
     header('Location: /history');
     exit();
 }

@@ -1,5 +1,6 @@
 <?php
 include_once('dbconn.php');
+include_once('userinfo.php');
 $dbconn = new dbconn();
 $con = $dbconn->db();
 
@@ -35,6 +36,9 @@ if ($stmt = $con->prepare("UPDATE `account` SET `name`= ?,`daily_limit`= ?,`mont
     $stmt->bind_param('sssi', $_POST['name'], $_POST['daily-limit'], $_POST['monthly-limit'], $_GET['id']);
     $stmt->execute();
 }
+
+UserInfo::send_activity_registry($_SESSION['id'], 'update_account', 2);
+
 header("Location: /view_account?id={$_GET['id']}");
 $stmt->close();
 exit();
