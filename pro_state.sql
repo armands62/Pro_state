@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2022 at 10:23 PM
+-- Generation Time: Jan 07, 2023 at 06:35 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -43,6 +43,21 @@ CREATE TABLE `account` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `activity_registry`
+--
+
+CREATE TABLE `activity_registry` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `activity` varchar(60) NOT NULL,
+  `significance` int(11) NOT NULL DEFAULT 1,
+  `date` datetime NOT NULL,
+  `ip_client` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transaction_history`
 --
 
@@ -52,7 +67,7 @@ CREATE TABLE `transaction_history` (
   `account_to` int(11) NOT NULL,
   `amount` double NOT NULL,
   `description` varchar(255) NOT NULL,
-  `date` date NOT NULL
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -70,7 +85,8 @@ CREATE TABLE `user` (
   `social_number` varchar(12) NOT NULL,
   `birth_date` date NOT NULL,
   `gender` varchar(6) NOT NULL,
-  `auth` int(11) NOT NULL
+  `auth` int(11) NOT NULL,
+  `admin` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -81,6 +97,13 @@ CREATE TABLE `user` (
 -- Indexes for table `account`
 --
 ALTER TABLE `account`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `activity_registry`
+--
+ALTER TABLE `activity_registry`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
@@ -109,6 +132,12 @@ ALTER TABLE `account`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `activity_registry`
+--
+ALTER TABLE `activity_registry`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `transaction_history`
 --
 ALTER TABLE `transaction_history`
@@ -129,6 +158,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `account`
   ADD CONSTRAINT `account_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `activity_registry`
+--
+ALTER TABLE `activity_registry`
+  ADD CONSTRAINT `activity_registry_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
 -- Constraints for table `transaction_history`

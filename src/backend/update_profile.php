@@ -1,5 +1,6 @@
 <?php
 include_once('dbconn.php');
+include_once('userinfo.php');
 $dbconn = new dbconn();
 $con = $dbconn->db();
 
@@ -53,6 +54,7 @@ if($stmt = $con->prepare('SELECT `id` FROM `user` WHERE `email` = ?;')) {
         $stmt->bind_param('sssi', $_POST['name'], $_POST['surname'], $_POST['email'], $_SESSION['id']);
         $stmt->execute();
     }
+    UserInfo::send_activity_registry($_SESSION['id'], 'update_profile', 3);
     header('Location: /profile');
     $stmt->close();
     exit();

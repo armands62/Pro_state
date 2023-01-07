@@ -13,26 +13,13 @@
 </head>
 <body>
 <header>
-    <a href="/" class="logo"><img src="./images/logo-transparent.png" alt="logo" class="logo-img"/></a>
+    <a href="/admin" class="logo"><img src="./images/logo-transparent.png" alt="logo" class="logo-img"/></a>
     <nav>
-        <a href="profile" class="button">Profile</a>
-        <a href="accounts" class="button">Accounts</a>
-        <a href="money_transfer" class="button">Money transfer</a>
-        <a href="history" class="button">History</a>
-        <a href="fiscles" class="button">Fiscleees!</a>
-        <?php
-        if(empty($_SESSION["logged"])) {
-            echo "<a href='/login' class='button auth-btn'>Autorizēties</a>";
-            echo "<a href='/signup' class='button'>Reģistrēties</a>";
-        } else {
-            if($_SESSION['admin'] > 0) {
-                echo "<a href='/admin' class='button auth-btn'>Administrācija</a>";
-                echo "<a href='/logout' class='button'>Iziet</a>";
-            } else {
-                echo "<a href='/logout' class='button auth-btn'>Iziet</a>";
-            }
-        }
-        ?>
+        <a href="/admin_requests" class="button">Pieprasījumi</a>
+        <a href="/admin_history" class="button">Maksājumi</a>
+        <a href="/admin_registry" class="button">Lietotāju darbību reģistrs</a>
+        <a href='/home' class='button auth-btn'>Atgriezties</a>
+        <a href='/logout' class='button'>Iziet</a>
     </nav>
 </header>
 <div id="session-alert">

@@ -11,8 +11,15 @@
     <tbody>
     <?php
     include_once("./backend/userinfo.php");
-    $account_info = UserInfo::get_accounts($_SESSION['id']);
+    $account_info = "";
+    if(isset($_SESSION['user_id'])) {
+        $account_info = UserInfo::get_accounts($_SESSION['user_id']);
+        unset($_SESSION['user_id']);
+    } else {
+        $account_info = UserInfo::get_accounts($_SESSION['id']);
+    }
     $transaction_info = UserInfo::get_transaction_history($account_info[$_POST['account-id']][0]);
+
     if($transaction_info == '') {
         echo '<td>Nav veiktu maksājumu!</td>';
     } else {

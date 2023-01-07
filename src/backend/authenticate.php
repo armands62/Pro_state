@@ -19,7 +19,7 @@ if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 }
 
 mysqli_report(MYSQLI_REPORT_STRICT);
-if($stmt = $con->prepare('SELECT `id`, `password` FROM `user` WHERE `email` = ?;')) {
+if($stmt = $con->prepare('SELECT `id`, `password`, `admin` FROM `user` WHERE `email` = ?;')) {
     $stmt->bind_param('s', $_POST['email']);
     $stmt->execute();
     $stmt->store_result();
@@ -27,7 +27,8 @@ if($stmt = $con->prepare('SELECT `id`, `password` FROM `user` WHERE `email` = ?;
     if($stmt->num_rows > 0){
         $id = 0;
         $password = '';
-        $stmt->bind_result($id, $password);
+        $admin = 0;
+        $stmt->bind_result($id, $password, $admin);
         $stmt->fetch();
 
         if(password_verify($_POST['password'], $password)) {
@@ -37,6 +38,8 @@ if($stmt = $con->prepare('SELECT `id`, `password` FROM `user` WHERE `email` = ?;
             $_SESSION['id'] = $id;
             $_SESSION['auth'] = UserInfo::get_auth($id);
             $_SESSION['last_activity'] = time();
+            $_SESSION['admin'] = $admin;
+            UserInfo::send_activity_registry($id, 'login', 1);
             header('Location: /');
         }
         else {

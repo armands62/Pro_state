@@ -7,7 +7,7 @@ class UserInfo {
         $dbconn = new dbconn();
         $con = $dbconn->db();
 
-        if($stmt = $con->prepare("SELECT `name`, `surname`, `email` FROM `user` WHERE `id` = ?;")) {
+        if($stmt = $con->prepare("SELECT `name`, `surname`, `email`, `auth` FROM `user` WHERE `id` = ?;")) {
             $stmt->bind_param('i', $id);
             $stmt->execute();
             $stmt->store_result();
@@ -17,8 +17,9 @@ class UserInfo {
                     'name' => '',
                     'surname' => '',
                     'email' => '',
+                    'auth' => '',
                 ];
-                $stmt->bind_result($user_info['name'], $user_info['surname'], $user_info['email']);
+                $stmt->bind_result($user_info['name'], $user_info['surname'], $user_info['email'], $user_info['auth']);
                 $stmt->fetch();
                 return $user_info;
             }
@@ -43,13 +44,40 @@ class UserInfo {
     public static function get_transaction_history($account_id) {
         $dbconn = new dbconn();
         $con = $dbconn->db();
-        if($stmt = $con->prepare('SELECT * FROM `transaction_history` WHERE `account_from` = ? OR account_to = ?;')) {
+        if($stmt = $con->prepare('SELECT * FROM `transaction_history` WHERE `account_from` = ? OR account_to = ? ORDER BY `date` DESC;')) {
             $stmt->bind_param('ii', $account_id, $account_id);
             return self::get_result_arr($stmt);
         }
         return '';
     }
 
+    public static function get_all_transaction_history() {
+        $dbconn = new dbconn();
+        $con = $dbconn->db();
+        if($stmt = $con->prepare('SELECT * FROM `transaction_history` ORDER BY `date` DESC;')) {
+            return self::get_result_arr($stmt);
+        }
+        return '';
+    }
+
+    public static function get_all_activity_registry() {
+        $dbconn = new dbconn();
+        $con = $dbconn->db();
+        if($stmt = $con->prepare('SELECT * FROM `activity_registry` ORDER BY `date` DESC;')) {
+            return self::get_result_arr($stmt);
+        }
+        return '';
+    }
+
+    public static function send_activity_registry($id, $message, $significance) {
+        $dbconn = new dbconn();
+        $con = $dbconn->db();
+        if($stmt = $con->prepare('INSERT INTO `activity_registry` (`user_id`, `activity`, `significance`, `date`, `ip_client`) VALUES (?, ?, ?, ?, ?);')) {
+            $date = date("Y-m-d H:i:s");
+            $stmt->bind_param("isiss", $id, $message, $significance, $date, self::get_client_ip());
+            $stmt->execute();
+        }
+    }
     /**
      * @param $stmt
      * @return array|string
@@ -205,6 +233,13 @@ class UserInfo {
         $restore = mt_rand(100000, 999999);
         $_SESSION['restore_code'] = $restore;
         $_SESSION['restore_time'] = time();
+    }
+
+    private static function get_client_ip() {
+        if(!empty($_SERVER['SERVER_ADDR'])) {
+            return filter_var($_SERVER['SERVER_ADDR'], FILTER_VALIDATE_IP);
+        }
+        else return '-';
     }
 }
 

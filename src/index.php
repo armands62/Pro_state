@@ -23,14 +23,70 @@ $request_method = $_SERVER['REQUEST_METHOD'];
 $requested_url = $_SERVER['REQUEST_URI'];
 $requested_url = strtok($requested_url, '?');
 
+$login_urls = ['/profile', '/accounts', '/money_transfer', '/view_account', '/history', '/logout', '/edit_profile', '/add_account', '/edit_account', '/authorize', '/send_auth'];
+$admin_urls = ['/admin', '/admin_registry', '/admin_requests', '/admin_history', '/admin_view_profile', '/admin_view_account'];
+
 if ($request_method == 'POST') {
     process_post_request($requested_url);
 } else {
+    // Routing for all pages where the user must have admin privileges
+    if(in_array($requested_url, $admin_urls)) {
+        if(!isset($_SESSION['admin'])) {
+            header('Location: /home');
+            exit();
+        }
+        if($_SESSION['admin'] < 1) {
+            header('Location: /home');
+            exit();
+        }
+        switch ($requested_url) {
+            case '/admin':
+                include('admin/home.php');
+                break;
+            case '/admin_requests':
+                include('admin/requests.php');
+                break;
+            case '/admin_registry':
+                if($_SESSION['admin'] >= 3) {
+                    include('admin/registry.php');
+                } else {
+                    $_SESSION['err_msg'] = 'Nepietiekams administratora līmenis! Lai piekļūtu reģistram, ir nepieciešams vismaz 3 administratora līmenis!';
+                    include('admin/home.php');
+                }
+                break;
+            case '/admin_history':
+                if($_SESSION['admin'] >= 2) {
+                include('admin/history.php');
+                } else {
+                    $_SESSION['err_msg'] = 'Nepietiekams administratora līmenis! Lai piekļūtu lietotāju maksājumu vēsturei, ir nepieciešams vismaz 2 administratora līmenis!';
+                    include('admin/home.php');
+                }
+                break;
+            case '/admin_view_profile':
+                if($_SESSION['admin'] >= 2) {
+                    include('admin/admin_view_profile.php');
+                } else {
+                    $_SESSION['err_msg'] = 'Nepietiekams administratora līmenis! Lai piekļūtu lietotāju maksājumu vēsturei, ir nepieciešams vismaz 2 administratora līmenis!';
+                    include('admin/home.php');
+                }
+                break;
+            case '/admin_view_account':
+                if($_SESSION['admin'] >= 2) {
+                    include('admin/admin_view_account.php');
+                } else {
+                    $_SESSION['err_msg'] = 'Nepietiekams administratora līmenis! Lai piekļūtu lietotāju maksājumu vēsturei, ir nepieciešams vismaz 2 administratora līmenis!';
+                    include('admin/home.php');
+                }
+                break;
+            default:
+                include('404.php');
+                break;
+        }
+        exit();
+    }
+
     // Routing for all pages where the user must be logged in
-    if ($requested_url == '/profile' || $requested_url == '/accounts' || $requested_url == '/money_transfer'
-        || $requested_url == '/view_account' || $requested_url == '/history' || $requested_url == '/logout'
-        || $requested_url == '/edit_profile' || $requested_url == '/add_account' || $requested_url == '/edit_account'
-        || $requested_url == '/authorize' || $requested_url == '/send_auth') {
+    if (in_array($requested_url, $login_urls)) {
         if (!empty($_SESSION["logged"])) {
 
             // Links with larger priorities
@@ -83,11 +139,10 @@ if ($request_method == 'POST') {
                 default:
                     include 'home.php';
             }
-            exit();
         } else {
             header('Location: /login');
-            exit();
         }
+        exit();
     }
     // Common page routes
     switch ($requested_url) {
