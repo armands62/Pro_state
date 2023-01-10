@@ -20,7 +20,7 @@ include_once("blocks/header.phtml");
                 include_once("./backend/userinfo.php");
                 $account_info = UserInfo::get_accounts($_SESSION['id']);
                 $transaction_info = UserInfo::get_all_transaction_history();
-                if($transaction_info == '') {
+                if($transaction_info == []) {
                     echo '<td>Nav veiktu maksājumu!</td>';
                 } else {
                     $i = 0;
