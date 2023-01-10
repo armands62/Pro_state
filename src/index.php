@@ -23,8 +23,8 @@ $request_method = $_SERVER['REQUEST_METHOD'];
 $requested_url = $_SERVER['REQUEST_URI'];
 $requested_url = strtok($requested_url, '?');
 
-$login_urls = ['/profile', '/accounts', '/money_transfer', '/view_account', '/history', '/logout', '/edit_profile', '/add_account', '/edit_account', '/authorize', '/send_auth'];
-$admin_urls = ['/admin', '/admin_registry', '/admin_requests', '/admin_history', '/admin_view_profile', '/admin_view_account'];
+$login_urls = ['/profile', '/accounts', '/money_transfer', '/view_account', '/history', '/logout', '/edit_profile', '/add_account', '/edit_account', '/authorize', '/send_auth', '/request'];
+$admin_urls = ['/admin', '/admin_registry', '/admin_requests', '/admin_history', '/admin_view_profile', '/admin_view_account', '/answer_request', '/delete_request'];
 
 if ($request_method == 'POST') {
     process_post_request($requested_url);
@@ -78,6 +78,12 @@ if ($request_method == 'POST') {
                     include('admin/home.php');
                 }
                 break;
+            case '/delete_request':
+                include('backend/delete_request.php');
+                break;
+            case '/answer_request':
+                include('admin/answer_request.php');
+                break;
             default:
                 include('404.php');
                 break;
@@ -108,6 +114,10 @@ if ($request_method == 'POST') {
             }
             if($requested_url == '/authorize') {
                 include 'authorize.php';
+                exit();
+            }
+            if($requested_url == '/request') {
+                include 'request.php';
                 exit();
             }
             if ($_SESSION['auth'] != 0) {
@@ -247,6 +257,12 @@ function process_post_request($requested_url) {
                 }
             }
             include 'backend/update_password.php';
+            break;
+        case '/create_request':
+            include 'backend/create_request.php';
+            break;
+        case '/send_answer_request':
+            include 'backend/send_answer_request.php';
             break;
         default:
             echo('POST');
