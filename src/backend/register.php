@@ -127,6 +127,7 @@ if($stmt = $con->prepare('SELECT `id` FROM `user` WHERE `email` = ? OR `social_n
             $_SESSION['id'] = $id;
             $_SESSION['auth'] = $auth;
             $_SESSION['last_activity'] = time();
+            $_SESSION['admin'] = 0;
             UserInfo::send_activity_registry($id, 'register', 2);
             header('Location: /profile');
             exit();

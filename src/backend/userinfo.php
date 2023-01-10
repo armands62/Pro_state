@@ -3,7 +3,8 @@ include_once('dbconn.php');
 include_once('mail.php');
 
 class UserInfo {
-    public static function get_profile($id) {
+    public static function get_profile($id): array
+    {
         $dbconn = new dbconn();
         $con = $dbconn->db();
 
@@ -24,13 +25,14 @@ class UserInfo {
                 return $user_info;
             }
             else {
-                return '';
+                return [];
             }
         }
-        return '';
+        return [];
     }
 
-    public static function get_accounts($id) {
+    public static function get_accounts($id): array
+    {
         $dbconn = new dbconn();
         $con = $dbconn->db();
 
@@ -38,35 +40,38 @@ class UserInfo {
             $stmt->bind_param('i', $id);
             return self::get_result_arr($stmt);
         }
-        return '';
+        return [];
     }
 
-    public static function get_transaction_history($account_id) {
+    public static function get_transaction_history($account_id): array
+    {
         $dbconn = new dbconn();
         $con = $dbconn->db();
         if($stmt = $con->prepare('SELECT * FROM `transaction_history` WHERE `account_from` = ? OR account_to = ? ORDER BY `date` DESC;')) {
             $stmt->bind_param('ii', $account_id, $account_id);
             return self::get_result_arr($stmt);
         }
-        return '';
+        return [];
     }
 
-    public static function get_all_transaction_history() {
+    public static function get_all_transaction_history(): array
+    {
         $dbconn = new dbconn();
         $con = $dbconn->db();
         if($stmt = $con->prepare('SELECT * FROM `transaction_history` ORDER BY `date` DESC;')) {
             return self::get_result_arr($stmt);
         }
-        return '';
+        return [];
     }
 
-    public static function get_all_activity_registry() {
+    public static function get_all_activity_registry(): array
+    {
         $dbconn = new dbconn();
         $con = $dbconn->db();
         if($stmt = $con->prepare('SELECT * FROM `activity_registry` ORDER BY `date` DESC;')) {
             return self::get_result_arr($stmt);
         }
-        return '';
+        return [];
     }
 
     public static function send_activity_registry($id, $message, $significance) {
@@ -80,9 +85,9 @@ class UserInfo {
     }
     /**
      * @param $stmt
-     * @return array|string
+     * @return array
      */
-    public static function get_result_arr($stmt)
+    public static function get_result_arr($stmt): array
     {
         $stmt->execute();
         $result = $stmt->get_result();
@@ -95,12 +100,13 @@ class UserInfo {
             }
             return $transaction_info;
         } else {
-            return '';
+            return [];
         }
 
     }
 
-    public static function get_account($account_id) {
+    public static function get_account($account_id): array
+    {
         $dbconn = new dbconn();
         $con = $dbconn->db();
 
@@ -128,10 +134,10 @@ class UserInfo {
                 return $account_info;
             }
             else {
-                return '';
+                return [];
             }
         }
-        return '';
+        return [];
     }
 
     /**

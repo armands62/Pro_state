@@ -24,7 +24,7 @@
             $account_info = UserInfo::get_accounts($_SESSION['id']);
         }
         $total = 0;
-        if($account_info == '') {
+        if($account_info == []) {
             echo '<td>Nav kontu!</td>';
         } else {
             foreach ($account_info as $value) {
