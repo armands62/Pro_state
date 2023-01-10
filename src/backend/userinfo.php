@@ -234,6 +234,43 @@ class UserInfo {
         }
         return false;
     }
+
+    public static function get_requests(): array
+    {
+        $dbconn = new dbconn();
+        $con = $dbconn->db();
+
+        if($stmt = $con->prepare('SELECT * FROM `request` ORDER BY `date` DESC;')) {
+            return self::get_result_arr($stmt);
+        }
+        return [];
+    }
+
+    public static function get_request($id): array
+    {
+        $dbconn = new dbconn();
+        $con = $dbconn->db();
+
+        if ($stmt = $con->prepare('SELECT `id`, `title`, `description`, `date`, `user_id` FROM `request` WHERE `id` = ?;')) {
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            $stmt->store_result();
+            if ($stmt->num_rows > 0) {
+                $request = [
+                    'id' => '',
+                    'title' => '',
+                    'description' => '',
+                    'date' => '',
+                    'user_id' => '',
+                ];
+                $stmt->bind_result($request['id'], $request['title'], $request['description'], $request['date'], $request['user_id']);
+                $stmt->fetch();
+                return $request;
+            }
+            return [];
+        }
+        return [];
+    }
     // Creates a password restoration number and time of creation
     private static function create_restore() {
         $restore = mt_rand(100000, 999999);

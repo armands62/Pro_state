@@ -35,6 +35,7 @@ class Mailer {
 
 
         $this->mail = new PHPMailer();
+        $this->mail->SMTPDebug = false;
         $this->mail->IsSMTP();
         $this->mail->Mailer = "smtp";
         $this->mail->IsHTML();
@@ -60,11 +61,7 @@ class Mailer {
         $this->mail->SetFrom($this->from_mail, $this->from_name);
         $this->mail->Subject = $this->subject;
         $this->mail->MsgHTML($this->content);
-        if(!$this->mail->Send()) {
-            echo "Error";
-        } else {
-            echo "Sent successfully";
-        }
+        $this->mail->Send();
     }
     public function set_recipient($mail, $name) {
         $this->recipient_mail = $mail;

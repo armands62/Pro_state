@@ -384,3 +384,31 @@ textarea {
     color: gray;
 
 }
+
+/* Requests page */
+
+.request-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+.request-buttons > * {
+    text-decoration: none;
+}
+.request {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    border-radius: 12px;
+    border: 1px solid black;
+    padding: 1%;
+    background-color: #D0D9DE;
+    margin: 2% auto;
+}
+
+.delete-button {
+    color: red;
+}
+
+main {
+    margin-bottom: 100px;
+}

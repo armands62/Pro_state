@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2023 at 06:35 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: Jan 10, 2023 at 10:13 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,6 +53,20 @@ CREATE TABLE `activity_registry` (
   `significance` int(11) NOT NULL DEFAULT 1,
   `date` datetime NOT NULL,
   `ip_client` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `request`
+--
+
+CREATE TABLE `request` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `title` varchar(60) NOT NULL,
+  `description` text NOT NULL,
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -108,6 +122,13 @@ ALTER TABLE `activity_registry`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Indexes for table `request`
+--
+ALTER TABLE `request`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `transaction_history`
 --
 ALTER TABLE `transaction_history`
@@ -138,6 +159,12 @@ ALTER TABLE `activity_registry`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `request`
+--
+ALTER TABLE `request`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `transaction_history`
 --
 ALTER TABLE `transaction_history`
@@ -164,6 +191,12 @@ ALTER TABLE `account`
 --
 ALTER TABLE `activity_registry`
   ADD CONSTRAINT `activity_registry_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `request`
+--
+ALTER TABLE `request`
+  ADD CONSTRAINT `request_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
 -- Constraints for table `transaction_history`
