@@ -6,8 +6,9 @@ if(empty($_SESSION['logged'])) {
 }
 include_once("backend/userinfo.php");
 ?>
-<main>
-    <label for="account-id">Izvadīt konta maksājumu informāciju:</label>
+<main class="history-main">
+    <div class="history-form">
+    <label for="account-id" class="account-output">Izvadīt konta maksājumu informāciju:</label>
     <select id="account-id" name="account-id">
         <option value="-1">Izvēlēties savu kontu</option>
         <?php
@@ -19,7 +20,8 @@ include_once("backend/userinfo.php");
         }
         ?>
     </select>
-    <button type="button" onclick="loadDoc()">Load table</button>
+    <button type="button" onclick="loadDoc()" class="load-table">Load table</button>
+    </div>
     <div class="account-list-container" id="table-container">
         <!--<?php include_once('blocks/transaction_table.php'); ?>-->
     </div>

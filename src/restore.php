@@ -1,3 +1,8 @@
+<?php
+if(!empty($_SESSION["logged"])) {
+    header("Location: index.php");
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,11 +26,18 @@
         ?>
         <form action="/send_restore" method="POST" class="login-page-authenticate">
             <label for="login-email">E-pasta adrese</label>
+        <form action="/authenticate" method="POST" class="login-page-authenticate">
+            <label for="email">E-pasta adrese</label>
+        <form action="/send_restore" method="POST" class="login-page-authenticate">
+            <label for="login-email">E-pasta adrese</label>
             <input type="text" name="email" placeholder="E-pasts" id="login-email" required>
             <p><a href="/" class="to-homepage">Atgriezties galvenajā lapā</a></p>
             <p><a href="/login">Tomēr atcerējos!</a></p>
             <input type="submit" value="Apstiprināt" id="submit">
         </form>
+        <p><a href="/restore" class="to-password-restore">Aizmirsāt paroli?</a></p>
+        <p><a href="/signup" class="to-registration">Vai jūs vēl neesat reģistrējies? Reģistrējieties šeit!</a></p>
+        <p><a href="/" class="to-homepage">Atgriezties galvenajā lapā</a></p>
     </div>
 </main>
 </body>

@@ -29,7 +29,7 @@
         } else {
             foreach ($account_info as $value) {
                 echo '<tr>';
-                echo "<th class=\"left\"><a href='$account_url?id=$value[0]'>$value[1] $value[2]</a></th>";
+                echo "<th class=\"left\"><a href='$account_url?id=$value[0]' class='profile-accounts'>$value[1] $value[2]</a></th>";
                 echo "<th class=\"right\">$value[4]</th>";
                 echo "<th class=\"right\">$value[5]</th>";
                 echo '<th class="right">' . ($value[4] + $value[5]) . '</th>';
