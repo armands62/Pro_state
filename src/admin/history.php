@@ -25,18 +25,27 @@ include_once("blocks/header.phtml");
                 } else {
                     $i = 0;
                     $page_start = 0;
-                    $page_end = 10;
-                    if(!empty($_GET['page'])) {
-                        $i = $_GET['page'];
-                        $page_start = (($i - 1) * 10) + 1;
-                        $page_end = $page_start + 9;
+                    $page_end = 0;
+                    if(empty($_GET['page'])) {
+                        $_GET['page'] = 1;
                     }
+                    $i = $_GET['page'];
+                    $page_start = ($i - 1) * 11;
+                    $page_end = $page_start + 10;
                     foreach ($transaction_info as $value) {
-                        if($i < $page_start)  {
-                            $i++;
-                            continue;
+                        if($_GET['page'] == 1) {
+                            if($i < $page_start) {
+                                $i++;
+                                continue;
+                            }
                         }
-                        if($i >= $page_end) break;
+                        else if($_GET['page'] > 1) {
+                            if($i <= $page_start) {
+                                $i++;
+                                continue;
+                            }
+                        }
+                        if($i > $page_end) break;
                         $account_from_info = UserInfo::get_account($value[1]);
                         $account_to_info = UserInfo::get_account($value[2]);
                         echo "<tr><th class=\"left\"><a href='/admin_view_account?id=$value[1]'>{$account_from_info['number']}</a> (<a href='/admin_view_profile?id={$account_from_info['user_id']}'>{$account_from_info['user_name']} {$account_from_info['user_surname']}</a>)</th>";
