@@ -8,8 +8,8 @@
     <title>Pro State Bank</title>
 </head>
 <body>
-<main class="signup-main">
-    <div class="signup-container">
+<main class="change-password-main">
+    <div class="change-password-container">
         <h2>Mainīt paroli</h2>
         <?php
         if(!empty($_SESSION["login_err_msg"])){
@@ -18,19 +18,27 @@
         }
         ?>
         <form action="/update_password" method="POST">
-            <?php
-            if(isset($_SESSION['logged'])) {
-                echo '<label for="password_old">Ievadiet veco paroli</label>';
-                echo '<input type="password" name="password_old" placeholder="Parole" id="password_old" required>';
-            }
-            ?>
-            <label for="password">Ievadiet jauno paroli</label>
-            <input type="password" name="password" placeholder="Parole" id="password" required>
+            <div class="password-change">
+                <?php
+                if(isset($_SESSION['logged'])) {
+                    echo '<label for="password_old" class="old-password">Ievadiet veco paroli</label>';
+                    echo '<input type="password" name="password_old" placeholder="Vecā parole" id="password_old" class="change-input" required>';
+                }
+                ?>
+            </div>
 
-            <label for="password_repeat">Ievadiet paroli vēlreiz</label>
-            <input type="password" name="password_repeat" placeholder="Parole" id="password_repeat" required>
+            <div class="password-change">
+                <label for="password" class="new-password">Ievadiet jauno paroli</label>
+                <input type="password" name="password" placeholder="Jaunā parole" id="password" class="change-input" required>
+            </div>
 
-            <input type="submit" value="Mainīt paroli" id="submit">
+            <div class="password-change">
+                <label for="password_repeat" class="new-password2">Ievadiet paroli vēlreiz</label>
+                <input type="password" name="password_repeat" placeholder="Jaunā parole" id="password_repeat" class="change-input" required>
+            </div>
+
+            <input type="submit" value="Mainīt paroli" class="change-submit">
+            <p><a href="/" class="cp-to-homepage">Galvenā lapā</a></p>
         </form>
     </div>
 </main>

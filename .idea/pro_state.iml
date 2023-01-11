@@ -5,8 +5,11 @@
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="armands62\ProState\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+<<<<<<< HEAD
+=======
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpmailer/phpmailer" />
+>>>>>>> 51a61be46e37baf33dc3e0f1e1c04426fba8f9d8
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

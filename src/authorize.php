@@ -10,8 +10,8 @@
         <title>Pro State Bank</title>
     </head>
     <body>
-    <main class="login-main">
-        <div class="login-container">
+    <main class="authorize-main">
+        <div class="authorize-container">
             <h2>Apstiprināt e-pastu</h2>
             <?php
             if(!empty($_SESSION["login_err_msg"])){
@@ -19,12 +19,14 @@
                 unset($_SESSION["login_err_msg"]);
             }
             ?>
-            <form action="/check_auth" method="POST" class="login-page-authenticate">
-                <label for="auth">Apstiprināšanas kods</label>
-                <input type="text" name="auth" placeholder="000000" id="login-email" required>
-                <p><a href="/" class="to-homepage">Atgriezties galvenajā lapā</a></p>
-                <p><a href="/send_auth">Sūtīt e-pastu atkārtoti</a></p>
-                <input type="submit" value="Apstiprināt" id="submit">
+            <form action="/check_auth" method="POST" class="authorize-page-form">
+                <label for="auth" class="authorize-code">Apstiprināšanas kods</label>
+                <input type="text" name="auth" placeholder="000000" class="submit-code" required>
+                <div class="authorize-buttons">
+                    <p><a href="/" class="submit-to-homepage">Atgriezties galvenajā lapā</a></p>
+                    <p><a href="/send_auth" class="send-code" >Sūtīt e-pastu atkārtoti</a></p>
+                </div>
+                <input type="submit" value="Apstiprināt" class="accept-code">
             </form>
         </div>
     </main>

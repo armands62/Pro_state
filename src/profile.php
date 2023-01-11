@@ -7,7 +7,7 @@ if(empty($_SESSION['logged'])) {
 include_once("backend/userinfo.php");
 ?>
 
-<main id="profile-main">
+<main class="profile-main">
 <div class="main-content">
     <div class="info-container">
         <div class="general-info">

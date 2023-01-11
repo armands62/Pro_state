@@ -25,20 +25,39 @@ if(!empty($_SESSION["logged"])) {
         }
         ?>
         <form action="/authenticate" method="POST" class="login-page-authenticate">
-            <label for="email">E-pasta adrese</label>
-            <input type="text" name="email" placeholder="E-pasts" id="login-email" required>
+            <div class="emails">
+                <label for="email" class="lemail">E-pasta adrese</label>
+                <div class="emails2">
+                    <img src="/images/email-icon.jpg" class="email-icon" width="30px" height="30px">
+                    <input type="text" name="email" placeholder="E-pasts" id="login-email" required>
+                </div>
+            </div>
 
-            <label for="password">Parole</label>
-            <input type="password" name="password" placeholder="Parole" id="login-password" required>
-            <input type="submit" value="Log in" id="submit">
+            <div class="passwords">
+                <label for="password" class="lpassword">Parole</label>
+                <div class="passwords2">
+                    <img src="/images/password-icon.jpg" class="password-icon" width="16px" height="18px">
+                    <input type="password" name="password" placeholder="Parole" class="login-password" required>
+                </div>
+            </div>
+            <input type="submit" value="Log in" class="submit-login">
         </form>
-        <p><a href="/restore" class="to-password-restore">Aizmirsāt paroli?</a></p>
-        <p><a href="/signup" class="to-registration">Vai jūs vēl neesat reģistrējies? Reģistrējieties šeit!</a></p>
-        <p><a href="/" class="to-homepage">Atgriezties galvenajā lapā</a></p>
+        <div class="login-container-footer">
+            <p><a href="/restore" class="to-password-restore">Aizmirsāt paroli?</a></p>
+            <p><a href="/signup" class="to-registration">Reģistrējieties šeit!</a></p>
+            <p><a href="/" class="to-homepage">Galvenā lapā</a></p>
+        </div>
     </div>
 </main>
 </body>
 </html>
-
-<?php
-include_once("blocks/footer.phtml");
+<footer class="login-footer">
+    <a href="/">© Pro State Bank 2022</a>
+    <a href="/profile">Profile</a>
+    <a href="/accounts">Accounts</a>
+    <a href="/money_transfer">Money transfer</a>
+    <a href="/history">History</a>
+    <a href="/fiscles">Fiscleees!</a>
+</footer>
+</body>
+</html>

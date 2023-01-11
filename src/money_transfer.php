@@ -7,16 +7,17 @@ if(empty($_SESSION['logged'])) {
 include_once("backend/userinfo.php");
 ?>
 <script src="src/js/money_transfer.js"></script>
-<main>
+<main class="money_transfer-main">
     <?php
     if(!empty($_SESSION["login_err_msg"])){
         echo "<p class='login-error'>{$_SESSION["login_err_msg"]}</p>";
         unset($_SESSION["login_err_msg"]);
     }
     ?>
-    <form action="/transfer" method="POST">
+    <form action="/transfer" method="POST" class="money_transfer-form">
+        <div class="mt">
         <label for="account-from">Pārskaitāmais konts</label>
-        <select name="account-from" id="account-from">
+        <select name="account-from" id="account-from" class="mt-input">
             <option value="0">Izvēlēties savu kontu</option>
             <?php
                 $account_info = UserInfo::get_accounts($_SESSION['id']);
@@ -25,17 +26,24 @@ include_once("backend/userinfo.php");
                 }
             ?>
         </select>
+        </div>
 
-        <label for="account-to">Saņēmēja konts</label>
-        <input type="text" name="account-to" placeholder="Konta nosaukums" id="account-to" maxlength="21" required>
+        <div class="mt">
+        <label for="account-to" class="mt-label">Saņēmēja konts</label>
+        <input type="text" name="account-to" placeholder="Konta nosaukums" id="account-to" maxlength="21" class="mt-input" required>
+        </div>
 
-        <label for="amount">Pārskaitāmā summa</label>
-        <input type="number" name="amount" value="35" id="amount" min="10" max="300" required>
+        <div class="mt">
+        <label for="amount" class="mt-label">Pārskaitāmā summa</label>
+        <input type="number" name="amount" value="35" id="amount" min="10" max="300" class="mt-input" required>
+        </div>
 
-        <label for="description">Apraksts</label>
-        <textarea name="description" placeholder="Apraksts" id="description" maxlength="255" required></textarea>
+        <div class="mt">
+        <label for="description" class="mt-label">Apraksts</label>
+        <textarea name="description" placeholder="Apraksts" id="description" maxlength="255" class="mt-input" required></textarea>
+        </div>
 
-        <input type="submit" value="Veikt maksājumu" id="submit">
+        <input type="submit" value="Veikt maksājumu" class="submit-payment">
     </form>
 </main>
 <?php
