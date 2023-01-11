@@ -21,19 +21,29 @@ include_once("blocks/header.phtml");
                     echo '<td>Nav veiktu maksājumu!</td>';
                 } else {
                     $i = 0;
-                    $page_start = 1;
-                    $page_end = 10;
-                    if(!empty($_GET['page'])) {
-                        $i = $_GET['page'];
-                        $page_start = (($i - 1) * 10) + 1;
-                        $page_end = $page_start + 9;
+                    $page_start = 0;
+                    $page_end = 0;
+                    if(empty($_GET['page'])) {
+                        $_GET['page'] = 1;
                     }
+                    $i = $_GET['page'];
+                    $page_start = ($i - 1) * 11;
+                    $page_end = $page_start + 10;
+
                     foreach ($registry_info as $value) {
-                        if($i < $page_start)  {
-                            $i++;
-                            continue;
+                        if($_GET['page'] == 1) {
+                            if($i < $page_start) {
+                                $i++;
+                                continue;
+                            }
                         }
-                        if($i >= $page_end) break;
+                        else if($_GET['page'] > 1) {
+                            if($i <= $page_start) {
+                                $i++;
+                                continue;
+                            }
+                        }
+                        if($i > $page_end) break;
                         $profile_info = UserInfo::get_profile($value[1]);
                         echo "<tr><th class=\"left\"><a href='/admin_view_profile?id=$value[1]'>{$profile_info['name']} {$profile_info['surname']}</a></th>";
                         switch ($value[3]) {

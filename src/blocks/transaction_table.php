@@ -20,7 +20,7 @@
     }
     $transaction_info = UserInfo::get_transaction_history($account_info[$_POST['account-id']][0]);
 
-    if($transaction_info == '') {
+    if($transaction_info == []) {
         echo '<td>Nav veiktu maksājumu!</td>';
     } else {
         $i = 0;
