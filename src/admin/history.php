@@ -24,7 +24,7 @@ include_once("blocks/header.phtml");
                     echo '<td>Nav veiktu maksājumu!</td>';
                 } else {
                     $i = 0;
-                    $page_start = 1;
+                    $page_start = 0;
                     $page_end = 10;
                     if(!empty($_GET['page'])) {
                         $i = $_GET['page'];
