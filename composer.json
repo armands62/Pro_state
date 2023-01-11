@@ -1,0 +1,14 @@
+{
+    "name": "armands62/pro_state",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "armands62\\ProState\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "phpmailer/phpmailer": "dev-master"
+    }
+}

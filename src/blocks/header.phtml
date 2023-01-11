@@ -1,0 +1,47 @@
+<?php
+?>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex Sans KR&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="src/css/main.css">
+    <title>Pro State Bank</title>
+</head>
+<body>
+<header>
+    <a href="/" class="logo"><img src="./images/logo-transparent.png" alt="logo" class="logo-img"/></a>
+    <nav>
+        <a href="profile" class="button">Profile</a>
+        <a href="accounts" class="button">Accounts</a>
+        <a href="money_transfer" class="button">Money transfer</a>
+        <a href="history" class="button">History</a>
+        <a href="fiscles" class="button">Fiscleees!</a>
+        <?php
+        if(empty($_SESSION["logged"])) {
+            echo "<a href='/login' class='button auth-btn'>Autorizēties</a>";
+            echo "<a href='/signup' class='button'>Reģistrēties</a>";
+        } else {
+            if($_SESSION['admin'] > 0) {
+                echo "<a href='/admin' class='button auth-btn'>Administrācija</a>";
+                echo "<a href='/logout' class='button'>Iziet</a>";
+            } else {
+                echo "<a href='/logout' class='button auth-btn'>Iziet</a>";
+            }
+        }
+        ?>
+    </nav>
+</header>
+<div id="session-alert">
+    <h2>Jūsu sesija drīz beigsies!</h2>
+    <p class="countdown">Līdz sesijas noilgumam palikušas <span id="countdown">0</span> sekundes!</p>
+    <?php echo "<a href=\"{$_SERVER['REQUEST_URI']}\">Atjaunot sesiju</a>"?>
+</div>
+<div id="session-expire">
+    <h2>Jūsu sesija ir beigusies!</h2>
+    <p class="countdown">Lai turpinātu darbu, nepieciešams ielogoties atkārtoti.</p>
+    <a href="/">Apstiprināt</a>
+</div>
