@@ -15,7 +15,7 @@ include_once("./backend/userinfo.php");
             echo "<div class='request'><h1 class='request-name'>$request[2]</h1>";
             echo "<h2 class='requester'>{$profile['name']} {$profile['surname']}</h2>";
             echo "<p class='request-date-time'>$request[4]</p>";
-            echo "<p class='request-info'>$request[3]</p>";
+            echo "<div class='rq-info'><p class='request-info'>$request[3]</p></div>";
             echo "<div class='request-buttons'><a href='/answer_request?id=$request[0]' class='answer-button'>Atbildēt</a>";
             echo "<a href='/delete_request?id=$request[0]' class='delete-button'>Dzēst</a></div>";
             echo "</div>";

@@ -9,7 +9,7 @@ include_once("./backend/userinfo.php");
     $request = UserInfo::get_request($_GET['id']);
     $profile = UserInfo::get_profile($request['user_id']);
 
-    echo "<div class='request'><h1>{$request['title']}</h1>";
+    echo "<div class='request-answer'><h1>{$request['title']}</h1>";
     echo "<h2>{$profile['name']} {$profile['surname']}</h2>";
     echo "<p>{$request['date']}</p>";
     echo "<p>{$request['description']}</p>";
