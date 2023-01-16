@@ -38,8 +38,8 @@ if(preg_match('/[\p{L}-]+/u', $_POST['surname']) == 0 || strlen($_POST['surname'
 # Password
 # - Can't be shorter than 4 characters, can't be longer than 25 characters
 # - Regular expressions aren't necessary, since the database receives only the password crypt
-if (strlen($_POST['password']) > 25 || strlen($_POST['password']) < 4) {
-    $_SESSION['login_err_msg'] = 'Parolei jābūt no 4 līdz 25 simbolu garai!';
+if (strlen($_POST['password']) > 25 || strlen($_POST['password']) < 8) {
+    $_SESSION['login_err_msg'] = 'Parolei jābūt no 8 līdz 25 simbolu garai!';
     header('Location: /signup');
     exit();
 }
