@@ -18,6 +18,7 @@ if (!isset($_POST['account-from'], $_POST['account-to'], $_POST['amount'], $_POS
 
 # Validation
 $account_info = UserInfo::get_accounts($_SESSION['id']);
+$account_from_info = UserInfo::get_account($_POST['account-from']);
 
 # ACCOUNT (TO)
 # - Must be formatted correctly
@@ -28,7 +29,7 @@ if (preg_match('/(LV[0-9]{2}PRST[0-9]{13})/', $_POST['account-to']) == 0 || strl
     header('Location: /transfer');
     exit();
 }
-if ($_POST['account-from'] == $_POST['account-to']) {
+if ($account_from_info['number'] == $_POST['account-to']) {
     $_SESSION['login_err_msg'] = 'Kontu numuri nedrīkst sakrist!';
     header('Location: /transfer');
     exit();
@@ -55,34 +56,36 @@ if ($stmt = $con->prepare('SELECT id FROM account WHERE number = ?')) {
 # - TODO: Sum of all money transfer amounts must be less than account daily or monthly limit
 if ($_POST['amount'] < 0) {
     $_SESSION['login_err_msg'] = 'Nepareizi ievadīts pārskaitījuma daudzums!';
-    header('Location: /transfer');
+    header('Location: /money_transfer');
     exit();
 }
 
-$account_from = 0;
-foreach ($account_info as $value) {
-    if($value[1] == $_POST['account-from']) {
-        if($_POST['amount'] > $value[4]) {
-            $_SESSION['login_err_msg'] = 'Nepietiek līdzekļu!';
-            header('Location: /transfer');
-            exit();
-        }
-
-        if($_POST['amount'] > $value[6]) {
-            $_SESSION['login_err_msg'] = 'Tiek pārsniegts dienas limits!';
-            header('Location: /transfer');
-            exit();
-        }
-
-        if($_POST['amount'] > $value[7]) {
-            $_SESSION['login_err_msg'] = 'Tiek pārsniegts mēneša limits!';
-            header('Location: /transfer');
-            exit();
-        }
-        $account_from = $value[0]; # Assigning identification for later use in query
-        break;
-    }
+# Available funds check
+if($_POST['amount'] > $account_from_info['available']) {
+    $_SESSION['login_err_msg'] = 'Nepietiek līdzekļu!';
+    header('Location: /money_transfer');
+    exit();
 }
+
+# Daily limit check
+$spent_daily = UserInfo::get_spent_daily($_POST['account-from']);
+if($spent_daily + $_POST['amount'] > $account_from_info['daily_limit']) {
+    $_SESSION['login_err_msg'] = 'Tiek pārsniegts dienas limits!';
+    header('Location: /money_transfer');
+    exit();
+}
+
+# Monthly limit check
+$spent_monthly = UserInfo::get_spent_monthly($_POST['account-from']);
+
+if($spent_monthly + $_POST['amount'] > $account_from_info['monthly_limit']) {
+    $_SESSION['login_err_msg'] = 'Tiek pārsniegts mēneša limits!';
+    header('Location: /money_transfer');
+    exit();
+}
+
+# Assigning identification for later use in query
+$account_from = $_POST['account-from'];
 
 # Database queries
 # - Updating both profile accounts

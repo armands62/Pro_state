@@ -22,7 +22,7 @@ include_once("backend/userinfo.php");
             <?php
                 $account_info = UserInfo::get_accounts($_SESSION['id']);
                 foreach ($account_info as $value) {
-                    echo "<option value='$value[1]'>$value[1] $value[2] ($value[4]$)</option>";
+                    echo "<option value='$value[0]'>$value[1] $value[2] ($value[4]$)</option>";
                 }
             ?>
         </select>
