@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     function sessionAlert() {
         alertWindow.style.display = 'block';
+        seconds = 120;
         sessionCountdown = setInterval(updateCountdown, 1000);
     }
     function sessionEnd() {
