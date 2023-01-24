@@ -22,14 +22,14 @@ if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 # Name, surname
 # - Can only store characters
 # - Can't be longer than 60 characters
-if (preg_match('/[\p{L}-]+/u', $_POST['name']) == 0 || strlen($_POST['name']) > 60) {
+if (preg_match('/[a-zA-ZāĀēĒīĪūŪōŌŗŖšŠģĢķĶļĻžŽčČņŅ]+$/', $_POST['name']) == 0 || strlen($_POST['name']) > 60) {
     $_SESSION['login_err_msg'] = 'Nepareizi ievadīts vārds!';
-    header('Location: /update_profile');
+    header('Location: /edit_profile');
     exit();
 }
-if (preg_match('/[\p{L}-]+/u', $_POST['surname']) == 0 || strlen($_POST['surname']) > 60) {
+if (preg_match('/[a-zA-ZāĀēĒīĪūŪōŌŗŖšŠģĢķĶļĻžŽčČņŅ]+$/', $_POST['surname']) == 0 || strlen($_POST['surname']) > 60) {
     $_SESSION['login_err_msg'] = 'Nepareizi ievadīts uzvārds!';
-    header('Location: /update_profile');
+    header('Location: /edit_profile');
     exit();
 }
 
