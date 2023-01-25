@@ -13,13 +13,30 @@
 </head>
 <body>
 <header>
-    <a href="/admin" class="logo"><img src="./images/logo-transparent.png" alt="logo" class="logo-img"/></a>
-    <nav>
-        <a href="/admin_requests" class="button">Pieprasījumi</a>
-        <a href="/admin_history" class="button">Maksājumi</a>
-        <a href="/admin_registry" class="button">Lietotāju darbību reģistrs</a>
-        <a href='/home' class='button auth-btn'>Atgriezties</a>
-        <a href='/logout' class='button'>Iziet</a>
+    <div class="logo"><img src="./images/logo-transparent.png" alt="logo" class="logo-img"/></div>
+    <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <nav class="nav">
+        <ul class="header-menu">
+            <li>
+                <a href="/admin_requests" class="active">Pieprasījumi</a>
+            </li>
+            <li>
+                <a href="/admin_history" class="active">Maksājumi</a>
+            </li>
+            <li>
+                <a href="/admin_registry" class="active">Lietotāju darbību reģistrs</a>
+            </li>
+            <li>
+                <a href='/home' class="active">Atgriezties</a>
+            </li>
+            <li>
+                <a href='/logout' class="active">Iziet</a>
+            </li>
+        </ul>
     </nav>
 </header>
 <div id="session-alert">
@@ -32,3 +49,4 @@
     <p class="countdown">Lai turpinātu darbu, nepieciešams ielogoties atkārtoti.</p>
     <a href="/">Apstiprināt</a>
 </div>
+<script src="/src/js/header.js"></script>

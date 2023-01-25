@@ -12,3 +12,5 @@ if($_SESSION['id'] != $account_info['user_id']) {
 }
 include("blocks/account_info.php");
 include_once("blocks/footer.phtml");
+?>
+<link href="src/css/adaptive.css" type="text/css" rel="stylesheet">

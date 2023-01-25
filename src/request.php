@@ -6,7 +6,9 @@ exit();
 }
 include_once("backend/userinfo.php");
 ?>
-<main class="client-request-main">
+<link rel="stylesheet" href="src/css/request.css" type="text/css">
+<link href="src/css/adaptive.css" type="text/css" rel="stylesheet">
+<div class="client-request-main">
     <div class="client-request-container">
         <div class="client-request-info">
             <h1>Nosūtīt ziņu administratoram</h1>
@@ -26,6 +28,6 @@ include_once("backend/userinfo.php");
         </form>
         </div>
     </div>
-</main>
+</div>
 <?php
 include_once("blocks/footer.phtml");

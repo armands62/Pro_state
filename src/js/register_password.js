@@ -2,7 +2,6 @@ var password = document.getElementById('password'); //declare variable
 var upperCase = document.getElementById('upper'); //declare variable
 var lowerCase = document.getElementById('lower'); //declare variable
 var digit = document.getElementById('number'); //declare variable
-var specialCharacter = document.getElementById('special') //declare variable
 var minLength = document.getElementById('length') //declare variable
 
 password.onfocus = function() {  // function on focus (when click on input field, function start working)
@@ -35,22 +34,13 @@ password.onkeyup = function() {
     }
   
     // Validate numbers
-    if(password.value.length = /[0-9]/g) {
+    var digits = /[0-9]/g;
+    if(password.value.match(digits) ) {
         digit.classList.remove("invalid");
         digit.classList.add("valid");
     } else {
         digit.classList.remove("valid");
         digit.classList.add("invalid");
-    }
-
-    // Validate special characters
-    var specials = /[!@#\$%\^&\*]/g;
-    if(password.value.match(specials)) {  
-      specialCharacter.classList.remove("invalid");
-      specialCharacter.classList.add("valid");
-    } else {
-      specialCharacter.classList.remove("valid");
-      specialCharacter.classList.add("invalid");
     }
 
     // Validate length

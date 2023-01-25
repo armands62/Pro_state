@@ -12,36 +12,55 @@
     <title>Pro State Bank</title>
 </head>
 <body>
-<header>
-    <a href="/" class="logo"><img src="./images/logo-transparent.png" alt="logo" class="logo-img"/></a>
-    <nav>
-        <a href="profile" class="button">Profile</a>
-        <a href="accounts" class="button">Accounts</a>
-        <a href="money_transfer" class="button">Transfer</a>
-        <a href="history" class="button">History</a>
-        <a href="fiscles" class="button">Fiscleees!</a>
-        <?php
-        if(empty($_SESSION["logged"])) {
-            echo "<a href='/login' class='button auth-btn'>Autorizēties</a>";
-            echo "<a href='/signup' class='button'>Reģistrēties</a>";
-        } else {
-            if($_SESSION['admin'] > 0) {
-                echo "<a href='/admin' class='button auth-btn'>Administrācija</a>";
-                echo "<a href='/logout' class='button'>Iziet</a>";
-            } else {
-                echo "<a href='/logout' class='button auth-btn'>Iziet</a>";
-            }
-        }
-        ?>
-    </nav>
-</header>
-<div id="session-alert">
-    <h2>Jūsu sesija drīz beigsies!</h2>
-    <p class="countdown">Līdz sesijas noilgumam palikušas <span id="countdown">0</span> sekundes!</p>
-    <?php echo "<a href=\"{$_SERVER['REQUEST_URI']}\">Atjaunot sesiju</a>"?>
-</div>
-<div id="session-expire">
-    <h2>Jūsu sesija ir beigusies!</h2>
-    <p class="countdown">Lai turpinātu darbu, nepieciešams ielogoties atkārtoti.</p>
-    <a href="/">Apstiprināt</a>
-</div>
+    <header>
+        <div class="logo"><img src="./images/logo-transparent.png" alt="logo" class="logo-img"/></div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="nav">
+            <ul class="header-menu">
+                <li>
+                    <a href="profile" class="active">Profile</a>
+                </li>
+                <li>
+                    <a href="accounts" class="active">Accounts</a>
+                </li>
+                <li>
+                    <a href="money_transfer" class="active">Transfer</a>
+                </li>
+                <li>
+                    <a href="history" class="active">History</a>
+                </li>
+                <li>
+                <a href="fiscles" class="active">Fiscleees!</a> 
+                </li>
+                <?php
+                if(empty($_SESSION["logged"])) {
+                    echo "<li><a href='/login' class='active'>Autorizēties</a></li>";
+                    echo "<li><a href='/signup' class='active'>Reģistrēties</a></li>";
+                } else {
+                    if($_SESSION['admin'] > 0) {
+                        echo "<li><a href='/admin' class='active'>Administrācija</a></li>";
+                        echo "<li><a href='/logout' class='active'>Iziet</a></li>";
+                    } else {
+                        echo "<li><a href='/logout' class='active'>Iziet</a></li>";
+                    }
+                }
+                ?>
+            </ul>
+        </nav>
+    </header>
+    <div id="session-alert">
+        <h2>Jūsu sesija drīz beigsies!</h2>
+        <p class="countdown">Līdz sesijas noilgumam palikušas <span id="countdown">0</span> sekundes!</p>
+        <?php echo "<a href=\"{$_SERVER['REQUEST_URI']}\">Atjaunot sesiju</a>"?>
+    </div>
+    <div id="session-expire">
+        <h2>Jūsu sesija ir beigusies!</h2>
+        <p class="countdown">Lai turpinātu darbu, nepieciešams ielogoties atkārtoti.</p>
+        <a href="/">Apstiprināt</a>
+    </div>
+</body>
+<script src="/src/js/header.js"></script>

@@ -6,6 +6,8 @@ if(empty($_SESSION['logged'])) {
 }
 include_once("backend/userinfo.php");
 ?>
+<link rel="stylesheet" href="src/css/history.css" type="text/css">
+<link href="src/css/adaptive.css" type="text/css" rel="stylesheet">
 <main class="history-main">
     <div class="history-form">
     <label for="account-id" class="account-output">Izvadīt konta maksājumu informāciju:</label>

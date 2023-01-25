@@ -7,6 +7,8 @@ if(empty($_SESSION['logged'])) {
 include_once("backend/userinfo.php");
 ?>
 <script src="src/js/money_transfer.js"></script>
+<link rel="stylesheet" href="src/css/money_transfer.css" type="text/css">
+<link href="src/css/adaptive.css" type="text/css" rel="stylesheet">
 <main class="money_transfer-main">
     <?php
     if(!empty($_SESSION["login_err_msg"])){
@@ -22,7 +24,7 @@ include_once("backend/userinfo.php");
             <?php
                 $account_info = UserInfo::get_accounts($_SESSION['id']);
                 foreach ($account_info as $value) {
-                    echo "<option value='$value[1]'>$value[1] $value[2] ($value[4]$)</option>";
+                    echo "<option value='$value[0]'>$value[1] $value[2] ($value[4]$)</option>";
                 }
             ?>
         </select>

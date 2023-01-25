@@ -6,11 +6,15 @@ if(empty($_SESSION['logged'])) {
 }
 include_once("backend/userinfo.php");
 ?>
-    <main class="accounts-main">
-        <div class="account-list-container">
+<link href="src/css/adaptive.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="src/css/accounts.css" type="text/css">
+    <div class="accounts-main">
+        <div class="accounts-container">
             <?php include_once('blocks/account_table.php'); ?>
-            <a href="/add_account" class="account-add-button">Pievienot kontu</a>
+            <div class="adding-button">
+                <a href="/add_account" class="account-add-button">Pievienot kontu</a>
+            </div>
         </div>
-    </main>
+    </div>
 <?php
 include_once("blocks/footer.phtml");

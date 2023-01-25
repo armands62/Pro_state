@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const MAIN_IMG = document.getElementById("main-img")
-    const IMG_CYCLE = ["main-img.jpg", "main-img2.png", "main-img3.png"]
+    const IMG_CYCLE = ["main-img2.png", "main-img3.png"]
     CycleImage();
     function CycleImage() {
         let i = 0;

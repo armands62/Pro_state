@@ -110,7 +110,7 @@ class UserInfo {
         $dbconn = new dbconn();
         $con = $dbconn->db();
 
-        if($stmt = $con->prepare('SELECT `number`, `name`, `user_id`, `daily_limit`, `monthly_limit` FROM `account` WHERE `id` = ?;')) {
+        if($stmt = $con->prepare('SELECT `number`, `name`, `user_id`, `daily_limit`, `monthly_limit`, `available` FROM `account` WHERE `id` = ?;')) {
             $stmt->bind_param('i', $account_id);
             $stmt->execute();
             $stmt->store_result();
@@ -124,8 +124,9 @@ class UserInfo {
                     'user_surname' => '',
                     'daily_limit' => 0,
                     'monthly_limit' => 0,
+                    'available' => 0,
                 ];
-                $stmt->bind_result($account_info['number'], $account_info['name'], $account_info['user_id'], $account_info['daily_limit'], $account_info['monthly_limit']);
+                $stmt->bind_result($account_info['number'], $account_info['name'], $account_info['user_id'], $account_info['daily_limit'], $account_info['monthly_limit'], $account_info['available']);
                 $stmt->fetch();
 
                 $profile_info = self::get_profile($account_info['user_id']);
@@ -271,6 +272,24 @@ class UserInfo {
         }
         return [];
     }
+
+    // Transaction limit calculation
+    public static function get_spent_daily($account_id): float
+    {
+        $dbconn = new dbconn();
+        $con = $dbconn->db();
+        $date = date('Y-m-d H:m:s', strtotime(' -1 day'));
+        return self::get_spent($con, $account_id, $date);
+    }
+
+    public static function get_spent_monthly($account_id): float
+    {
+        $dbconn = new dbconn();
+        $con = $dbconn->db();
+        $date = date('Y-m-d H:m:s', strtotime(' -1 month'));
+        return self::get_spent($con, $account_id, $date);
+    }
+
     // Creates a password restoration number and time of creation
     private static function create_restore() {
         $restore = mt_rand(100000, 999999);
@@ -283,6 +302,28 @@ class UserInfo {
             return filter_var($_SERVER['SERVER_ADDR'], FILTER_VALIDATE_IP);
         }
         else return '-';
+    }
+
+    /**
+     * @param $con
+     * @param $account_id
+     * @param $date
+     * @return int
+     */
+    private static function get_spent($con, $account_id, $date): int
+    {
+        $spent = 0;
+        echo $date;
+        if ($stmt = $con->prepare("SELECT SUM(`amount`) FROM `transaction_history` WHERE `account_from` = ? AND `date` >= ?;")) {
+            $stmt->bind_param('is', $account_id, $date);
+            $stmt->execute();
+            $stmt->store_result();
+            if ($stmt->num_rows == 0) return 0;
+            $stmt->bind_result($spent);
+            $stmt->fetch();
+            if ($spent === NULL) return 0;
+        }
+        return $spent;
     }
 }
 
