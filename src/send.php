@@ -11,3 +11,5 @@ try {
 } catch (\PHPMailer\PHPMailer\Exception $e) {
     echo $e;
 }
+?>
+<link href="src/css/adaptive.css" type="text/css" rel="stylesheet">

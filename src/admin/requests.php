@@ -2,6 +2,7 @@
 include_once("blocks/header.phtml");
 include_once("./backend/userinfo.php");
 ?>
+<link rel="stylesheet" href="src/css/admin/requests.css" type="text/css">
     <main class="admin-request-main">
         <h1 class="user-request-page">Lietotāju pieprasījumu lapa</h1>
         <?php

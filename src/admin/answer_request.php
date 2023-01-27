@@ -2,6 +2,7 @@
 include_once("blocks/header.phtml");
 include_once("./backend/userinfo.php");
 ?>
+<link rel="stylesheet" href="src/css/admin/answer_request.css" type="text/css">
 <main class="admin-answer-request-main">
     <h1 class="answer-request-h1">Atbildēt uz lietotāja ziņu</h1>
     <form>

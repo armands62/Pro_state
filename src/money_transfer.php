@@ -7,6 +7,8 @@ if(empty($_SESSION['logged'])) {
 include_once("backend/userinfo.php");
 ?>
 <script src="src/js/money_transfer.js"></script>
+<link rel="stylesheet" href="src/css/money_transfer.css" type="text/css">
+<link href="src/css/adaptive.css" type="text/css" rel="stylesheet">
 <main class="money_transfer-main">
     <?php
     if(!empty($_SESSION["login_err_msg"])){
