@@ -1,9 +1,9 @@
 <?php
 include_once("blocks/header.phtml");
 ?>
-    <main class="home-main">
-        <h1>Maksājumu vēstures lapa</h1>
-        <div class="account-list-container" id="table-container">
+    <main class="admin-history-home-main">
+        <h2>Maksājumu vēstures lapa</h2>
+        <div class="admin-account-list-container" id="table-container">
             <table class="account-list-table">
                 <thead class="acc-list-thead">
                 <tr>

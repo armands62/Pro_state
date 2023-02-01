@@ -7,7 +7,6 @@ if(empty($_SESSION['logged'])) {
 include_once("backend/userinfo.php");
 ?>
 <link rel="stylesheet" href="src/css/history.css" type="text/css">
-<link href="src/css/adaptive.css" type="text/css" rel="stylesheet">
 <main class="history-main">
     <div class="history-form">
     <label for="account-id" class="account-output">Izvadīt konta maksājumu informāciju:</label>
@@ -22,9 +21,11 @@ include_once("backend/userinfo.php");
         }
         ?>
     </select>
-    <button type="button" onclick="loadDoc()" class="load-table">Load table</button>
+    <div class="load-table-div">
+        <button type="button" onclick="loadDoc()" class="load-table">Load table</button>
     </div>
-    <div class="account-list-container" id="table-container">
+    </div>
+    <div class="history-container" id="table-container">
         <!--<?php include_once('blocks/transaction_table.php'); ?>-->
     </div>
     <script src="/src/js/money_transfer.js"></script>

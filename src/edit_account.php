@@ -12,8 +12,6 @@ if($_SESSION['id'] != $account_info['user_id']) {
     exit();
 }
 ?>
-<link rel="stylesheet" href="src/css/edit_accounts.css" type="text/css">
-<link href="src/css/adaptive.css" type="text/css" rel="stylesheet">
     <main class="edit-acc-main">
         <div class="edit-acc-container">
         <?php
@@ -39,6 +37,5 @@ if($_SESSION['id'] != $account_info['user_id']) {
         </form>
         </div>
     </main>
-
 <?php
 include_once("blocks/footer.phtml");

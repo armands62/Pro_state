@@ -1,7 +1,7 @@
 <?php
 include_once("blocks/header.phtml");
 ?>
-    <main class="home-main">
+    <main class="registry-main">
         <h1>Lietotāju darbību reģistrs</h1>
         <div class="account-list-container" id="table-container">
             <table class="account-list-table">
@@ -66,7 +66,7 @@ include_once("blocks/header.phtml");
                 ?>
                 </tbody>
             </table>
-            <div class="table-nav">
+            <div class="registry-table-nav">
                 <?php
                 if(empty($_GET['page'])) {
                     $_GET['page'] = 1;

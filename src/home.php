@@ -2,7 +2,6 @@
 include_once("blocks/header.phtml");
 ?>
 <link href="src/css/main/css" type="text/css" rel="stylesheet">
-<link href="src/css/adaptive.css" type="text/css" rel="stylesheet">
     <div id="home-main">
         <div id="home-container">
         <p class="phrase">Pro State Bank: One of the most modernized virtual banks in the world!</p>

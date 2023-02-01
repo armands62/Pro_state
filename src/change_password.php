@@ -5,7 +5,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="src/css/main.css" type="text/css" rel="stylesheet">
-    <link href="src/css/adaptive.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="src/css/change_password.css" type="text/css">
     <title>Pro State Bank</title>
 </head>

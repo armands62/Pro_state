@@ -7,7 +7,6 @@ if(empty($_SESSION['logged'])) {
 include_once("backend/userinfo.php");
 ?>
 <link rel="stylesheet" href="src/css/profile.css" type="text/css">
-<link href="src/css/adaptive.css" type="text/css" rel="stylesheet">
 <main class="profile-main">
         <div id="general-info">
             <div class="flex-row">

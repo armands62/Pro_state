@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href="src/css/main.css" type="text/css" rel="stylesheet">
-    <link href="src/css/adaptive.css" type="text/css" rel="stylesheet">
     <title>Pro State Bank</title>
 </head>
 <body>
