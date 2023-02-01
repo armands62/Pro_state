@@ -6,7 +6,6 @@ if(empty($_SESSION['logged'])) {
 }
 include_once("backend/userinfo.php");
 ?>
-<link href="src/css/adaptive.css" type="text/css" rel="stylesheet">
 <link rel="stylesheet" href="src/css/accounts.css" type="text/css">
     <div class="accounts-main">
         <div class="accounts-container">

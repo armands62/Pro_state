@@ -8,7 +8,7 @@ include_once("./backend/userinfo.php");
         <?php
         $requests = UserInfo::get_requests();
         if ($requests == []) {
-            echo "Pašlaik nav pieprasījumu!";
+            echo "<p class='none-request'>Pašlaik nav pieprasījumu!</p>";
         }
         foreach ($requests as $request) {
             $profile = UserInfo::get_profile($request[1]);

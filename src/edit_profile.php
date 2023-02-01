@@ -7,7 +7,6 @@ if(empty($_SESSION['logged'])) {
 include_once("backend/userinfo.php");
 ?>
 <link rel="stylesheet" href="src/css/edit_profile.css" type="text/css">
-<link href="src/css/adaptive.css" type="text/css" rel="stylesheet"> 
     <main class="edit-profile-main">
         <?php
         if(!empty($_SESSION["login_err_msg"])){

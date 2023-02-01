@@ -1,8 +1,7 @@
 <?php
 include_once("blocks/header.phtml");
 ?>
-<link href="src/css/adaptive.css" type="text/css" rel="stylesheet">
-<link rel="stylesheet" href="src/css/add_accounts.css" type="text/css">
+<link rel="stylesheet" href="src/css/main.css" type="text/css">
 <div class="add-account-main">
     <?php
     if(!empty($_SESSION["login_err_msg"])){

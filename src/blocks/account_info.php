@@ -1,6 +1,4 @@
 <script src="/src/js/money_transfer.js"></script>
-<div class="main-content">
-    <div class="info-container">
         <div class="general-info">
             <ul class="info-text">
                 <?php
@@ -24,6 +22,4 @@
             $_SESSION['user_id'] = $account_info['user_id'];
             echo "<script>loadDoc($relative_id)</script>" ?>
         </div>
-    </div>
-
-</div>
+    
