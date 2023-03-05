@@ -193,6 +193,9 @@ if ($request_method == 'POST') {
             }
             include 'change_password.php';
             break;
+        case '/faq':
+            include 'faq.php';
+            break;
         default:
             include '404.php';
     }
