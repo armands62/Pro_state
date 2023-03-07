@@ -70,6 +70,7 @@ if(!empty($_SESSION["logged"])) {
             <div class="register-container-footer">
             <p><a href="/login" class="to-login">Pierakstieties šeit!</a></p>
             <p><a href="/" class="to-homepage">Galvenā lapā</a></p>
+            <p><a href="/faq" class="to-faq">FAQ</a></p>
         </div>
         </form>
     </div>  
@@ -89,6 +90,7 @@ if(!empty($_SESSION["logged"])) {
     <a href="/money_transfer">Money transfer</a>
     <a href="/history">History</a>
     <a href="/fiscles">Fiscleees!</a>
+    <a href="/faq">FAQ</a>
 </footer>
 </body>
 </html>
