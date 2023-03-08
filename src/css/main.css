@@ -2,6 +2,7 @@
        width: 100%;
        margin: 0;
        font-family: Trebuchet MS, sans-serif;
+       background-color: #d9e5ec;
    }
    
    * {
@@ -586,16 +587,14 @@
    .authorize-container {
        position: fixed;
        top: 30%;
-       left: 37%;
+       left: 30%;
        background: #b1c3ce;
        border-radius: 58px;
-       width: 25%;
+       width: 40%;
        min-height: 45vh;
    }
    
    .authorize-container>h2 {
-       padding-left: 20%;
-       margin-top: 0%;
        margin-bottom: 3%;
        padding-top: 3%;
        box-sizing: border-box;
@@ -604,23 +603,21 @@
        font-weight: 400;
        line-height: 63px;
        font-size: 26px;
+       width: 100%;
+       float: left;
+       text-align: center;
    }
-   
-   .authorize-page-form {
-       width: 300px;
-       min-height: 20vh;
-       margin-left: 5%;
-       margin-top: 0%;
-   }
-   
+
    .authorize-code {
-       padding: 6px;
        font-size: 20px;
        color: #4e5253;
        padding-top: 15px;
-       margin-left: 65px;
+       width: 100%;
+       float: left;
+       text-align: center;
+       margin-bottom: 4%;
    }
-   
+
    .submit-code {
        background: white;
        display: flex;
@@ -630,8 +627,9 @@
        margin-top: 10px;
        outline: none;
        border: none;
-       width: 170px;
-       margin-left: 25%;
+       width: 70%;
+       margin-left: 15%;
+       margin-bottom: 5%;
        height: 30px;
    }
    
@@ -640,12 +638,9 @@
        text-decoration: none;
        color: #4b4a4a;
        font-size: 18px;
-       width: 250px;
+       width: 100%;
        float: left;
-       margin-right: 40px;
-       margin-top: 40px;
-       margin-bottom: 15px;
-       margin-left: 20%;
+       text-align: center;
    }
    
    .send-code {
@@ -653,12 +648,15 @@
        text-decoration: none;
        color: #4b4a4a;
        font-size: 18px;
-       margin-left: 20%;
+       width: 100%;
+       float: left;
+       margin-top: 5%;
+       text-align: center;
    }
    
    .accept-code {
-       margin-left: 25%;
-       width: 200px;
+       margin-left: 20%;
+       width: 60%;
        padding: 0.3em;
        background-color: #bfd2dd;
        color: #4b4a4a;
@@ -668,9 +666,7 @@
    }
    
    .authorize-buttons {
-       width: 250px;
-       margin-top: -6%;
-       margin-left: 3%;
+       width: 100%;
    }
    /* EDIT ACCOUNT */
    
@@ -800,95 +796,13 @@
        min-height: 100vh;
    }
    
-   .authorize-container {
-       position: fixed;
-       top: 30%;
-       left: 37%;
-       background: #b1c3ce;
-       border-radius: 58px;
-       width: 25%;
-       min-height: 45vh;
-   }
-   
-   .authorize-container>h2 {
-       padding-left: 20%;
-       margin-top: 0%;
-       margin-bottom: 3%;
-       padding-top: 3%;
-       box-sizing: border-box;
-       color: #4e5253;
-       font-style: normal;
-       font-weight: 400;
-       line-height: 63px;
-       font-size: 26px;
-   }
-   
    .authorize-page-form {
-       width: 300px;
+       width: 100%;
        min-height: 20vh;
-       margin-left: 5%;
-       margin-top: 0%;
+       margin-top: 0;
    }
-   
-   .authorize-code {
-       padding: 6px;
-       font-size: 20px;
-       color: #4e5253;
-       padding-top: 15px;
-       margin-left: 65px;
-   }
-   
-   .submit-code {
-       background: white;
-       display: flex;
-       border-radius: 20px;
-       padding-left: 15px;
-       color: #4d4d4d;
-       margin-top: 10px;
-       outline: none;
-       border: none;
-       width: 170px;
-       margin-left: 25%;
-       height: 30px;
-   }
-   
-   .submit-to-homepage {
-       cursor: pointer;
-       text-decoration: none;
-       color: #4b4a4a;
-       font-size: 18px;
-       width: 250px;
-       float: left;
-       margin-right: 40px;
-       margin-top: 40px;
-       margin-bottom: 15px;
-       margin-left: 20%;
-   }
-   
-   .send-code {
-       cursor: pointer;
-       text-decoration: none;
-       color: #4b4a4a;
-       font-size: 18px;
-       margin-left: 20%;
-   }
-   
-   .accept-code {
-       margin-left: 25%;
-       width: 200px;
-       padding: 0.3em;
-       background-color: #bfd2dd;
-       color: #4b4a4a;
-       border: #a2b3bd 1px solid;
-       border-radius: 30px;
-       font-weight: 400;
-   }
-   
-   .authorize-buttons {
-       width: 250px;
-       margin-top: -6%;
-       margin-left: 3%;
-   }
+
+
    /*CLIENT SEND REQUEST CONTENT*/
    
    .client-request-main {
@@ -1502,7 +1416,6 @@
    /*ADMIN HOME*/
    
    .admin-home-main {
-       background-color: #d1d3d5;
        min-height: 80vh
    }
    
@@ -2066,7 +1979,6 @@
        background-size: cover;
        background-color: #d9e5ec;
        background-blend-mode: color-burn;
-       height: 100%;
        padding: 20px;
    }
    
@@ -2131,4 +2043,11 @@
    
    .sk {
        padding-left: 25px;
+   }
+   .indent-list > li {
+       margin-left: 8%;
+       list-style: disc;
+   }
+   main {
+       padding-bottom: 100px;
    }

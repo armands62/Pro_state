@@ -31,7 +31,7 @@ if($stmt = $con->prepare('SELECT `id` FROM `account` WHERE `name` = ? AND `user_
     $stmt->execute();
     $stmt->store_result();
     if($stmt->num_rows == 0){
-        if($stmt = $con->prepare('INSERT INTO `account` (`number`, `name`, `user_id`, `available`, `reserved`, `daily_limit`, `monthly_limit`) VALUES (?, ?, ?, 0, 0, ?, ?);')) {
+        if($stmt = $con->prepare('INSERT INTO `account` (`number`, `name`, `user_id`, `available`, `reserved`, `daily_limit`, `monthly_limit`) VALUES (?, ?, ?, 300, 0, ?, ?);')) {
             $number = generate_account_number($con);
             $stmt->bind_param('ssiii', $number, $_POST['name'], $_SESSION['id'], $_POST['daily-limit'], $_POST['monthly-limit']);
             $stmt->execute();

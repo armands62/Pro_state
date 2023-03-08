@@ -23,12 +23,12 @@
             <form action="/check_auth" method="POST" class="authorize-page-form">
                 <label for="auth" class="authorize-code">Apstiprināšanas kods</label>
                 <input type="text" name="auth" placeholder="000000" class="submit-code" required>
-                <div class="authorize-buttons">
-                    <p><a href="/" class="submit-to-homepage">Atgriezties galvenajā lapā</a></p>
-                    <p><a href="/send_auth" class="send-code" >Sūtīt e-pastu atkārtoti</a></p>
-                </div>
                 <input type="submit" value="Apstiprināt" class="accept-code">
             </form>
+            <div class="authorize-buttons">
+                <a href="/" class="submit-to-homepage">Atgriezties galvenajā lapā</a>
+                <a href="/send_auth" class="send-code" >Sūtīt e-pastu atkārtoti</a>
+            </div>
         </div>
     </main>
     </body>
