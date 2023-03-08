@@ -34,7 +34,7 @@
    }
    
    .logo {
-       margin: 9px 10px 10px 0px;
+       margin: 9px 10px 10px 0;
    }
    
    .logo-img {
@@ -85,7 +85,6 @@
    .phrase {
        margin-top: 3%;
        margin-left: 5%;
-       background-color: none;
        color: #302f2f;
        position: absolute;
        font-size: 1.2em;
@@ -141,7 +140,6 @@
        justify-content: left;
        line-height: 25px;
        border-top: #afb5b9 1px solid;
-       display: flex !important;
        padding-left: var(--base-size-40, 40px) !important;
        padding-right: var(--base-size-16, 16px) !important;
    }
@@ -307,7 +305,7 @@
    .profile-edit-button {
        text-decoration: none;
        color: #3a3d3e;
-       margin-bottom: 0px;
+       margin-bottom: 0;
    }
    
    .edit-account-main {
@@ -484,14 +482,11 @@
    }
    
    .general-info {
-       padding-top: 3%;
        max-width: 240px;
        overflow: hidden;
        display: flex;
        box-sizing: border-box;
        flex-direction: column;
-       ;
-       padding: 10px;
        background-color: #f1f1f1;
        border-radius: 8px;
        padding: 1rem 1rem;
@@ -567,7 +562,6 @@
        width: 100%;
        padding: 0.15em;
        background: #c5cbce;
-       border: #a1a5a8 1px solid;
        border: none;
        border-radius: 30px;
        font-weight: 500;
@@ -575,8 +569,7 @@
    /*Activate account content*/
    
    .authorize-main {
-       border: 0%;
-       margin: 0%;
+       margin: 0;
        background-image: url(/images/login-sign-background.png);
        background-size: cover;
        background-position: top;
@@ -751,7 +744,6 @@
    }
    
    .history-container {
-       display: none;
        display: table;
        box-sizing: border-box;
        background-color: white;
@@ -785,16 +777,7 @@
        width: 100%;
    }
    /*Activate account content*/
-   
-   .authorize-main {
-       border: 0%;
-       margin: 0%;
-       background-image: url(/images/login-sign-background.png);
-       background-size: cover;
-       background-position: top;
-       width: 100%;
-       min-height: 100vh;
-   }
+
    
    .authorize-page-form {
        width: 100%;
@@ -833,7 +816,6 @@
    
    .client-request-info {
        float: left;
-       min-width: none;
        max-width: 400px;
        margin: auto
    }
@@ -845,7 +827,6 @@
        margin-top: 10px;
        text-decoration: none;
        background-color: #cdd1d5;
-       border: none;
        border: #989898 1px solid;
    }
    
@@ -931,12 +912,11 @@
        font-style: normal;
        font-weight: 400;
        line-height: 44px;
-       margin-bottom: 1;
        font-size: 30px;
    }
    
    .login-form {
-       padding: 0px 45px 10px 45px;
+       padding: 0 45px 10px 45px;
    }
    
    .submit-login {
@@ -1006,7 +986,6 @@
        padding-top: 5px;
        padding-left: 5px;
        width: 100%;
-       min-width: none;
        outline: none;
        border: none;
    }
@@ -1017,7 +996,6 @@
        outline: none;
        border: none;
        max-width: 170px;
-       min-width: none;
        background-color: white;
    }
    
@@ -1121,12 +1099,11 @@
        font-style: normal;
        font-weight: 400;
        line-height: 44px;
-       margin-bottom: 1;
        font-size: 28px;
    }
    
    .registration-form {
-       padding: 0px 25px 10px 25px;
+       padding: 0 25px 10px 25px;
    }
    
    .registration-field,
@@ -1250,7 +1227,6 @@
    /*CHANGE PASSWORD CONTENT*/
    
    .change-password-main {
-       border: 0%;
        background-image: url(/images/login-sign-background.png);
        background-size: cover;
        background-position: top;
@@ -1278,7 +1254,6 @@
        font-weight: 600;
        line-height: 58px;
        font-size: 28px;
-       margin-bottom: 1;
    }
    
    .password-change {
@@ -1460,7 +1435,7 @@
    /*ADMIN ANSWER REQUEST CONTENT*/
    
    .admin-answer-request-main {
-       margin-top: 0%;
+       margin-top: 0;
        background-image: url(/images/admin-request-main.jpg);
        background-color: #D0D9DE;
        background-blend-mode: color-burn;
@@ -1472,7 +1447,7 @@
    
    .answer-request-h1 {
        margin-left: 4%;
-       margin-top: 0%;
+       margin-top: 0;
        padding-top: 1%;
        box-sizing: border-box;
        color: #4e5253;
@@ -1485,7 +1460,6 @@
    .request-answer {
        margin-top: 0;
        max-width: 400px;
-       border: #aab1b5 1px solid;
        background-color: #9ba2a4;
        opacity: 0.7;
        filter: alpha(Opacity=70);
@@ -1525,7 +1499,6 @@
        padding: 0.2em;
        width: 120px;
        cursor: pointer;
-       border: #000000 1px solid;
        border-radius: 20px;
        float: right;
        margin: 5px;
@@ -1536,7 +1509,7 @@
    /*ADMIN REQUEST CONTENT*/
    
    .admin-request-main {
-       margin-top: 0%;
+       margin-top: 0;
        background-image: url(/images/admin-request-main.jpg);
        background-color: #b2b9bf;
        background-blend-mode: color-burn;
@@ -1548,7 +1521,7 @@
    
    .user-request-page {
        padding-left: 2%;
-       margin-top: 0%;
+       margin-top: 0;
        padding-top: 1%;
        box-sizing: border-box;
        color: #4e5253;
@@ -1584,7 +1557,7 @@
    .request-name {
        font-size: 26px;
        color: #434648;
-       margin-bottom: 0%;
+       margin-bottom: 0;
        padding-bottom: 7px;
        border-bottom: #4e5253 1px solid;
    }
@@ -1594,7 +1567,7 @@
        color: #434648;
        margin-top: 5px;
        margin-left: 10px;
-       margin-bottom: 0%
+       margin-bottom: 0;
    }
    
    .request-date-time {
@@ -1604,7 +1577,7 @@
    }
    
    .request-info {
-       margin-top: 0%;
+       margin-top: 0;
        color: #434648;
        margin-left: 10px;
        width: 400px;
@@ -1630,7 +1603,6 @@
    }
    
    .registry-main>.account-list-table {
-       display: table;
        box-sizing: border-box;
        background-color: white;
        border-top: #616669 1px solid;
@@ -1709,7 +1681,6 @@
            margin-bottom: 3%;
        }
        .account-list-table {
-           display: none;
            display: table;
            box-sizing: border-box;
            background-color: white;
@@ -1805,7 +1776,6 @@
            height: 600px;
        }
        header {
-           position: none;
            width: 100%;
            padding: 0;
            margin: 0;
@@ -1850,7 +1820,6 @@
        }
        .nav ul li a {
            font-size: 18px;
-           margin-bottom: 12px;
            padding: 0;
            color: #bdc4c8;
            margin: -15px 5px;
@@ -1957,7 +1926,6 @@
        }
        /*PROFILE CONTENT*/
        #general-info {
-           padding-top: 3%;
            width: 30vw;
            overflow: hidden;
            display: flex;
@@ -2010,7 +1978,7 @@
        cursor: pointer;
        position: relative;
        color: #000;
-       font-family: Arial;
+       font-family: Arial, sans-serif;
        font-weight: 400;
        font-size: 20px;
        margin-bottom: 2px;
@@ -2037,7 +2005,6 @@
    
    .faq-content.visible {
        opacity: 1;
-       min-height: none;
        max-height: 700px;
    }
    
