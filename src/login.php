@@ -11,7 +11,6 @@ if(!empty($_SESSION["logged"])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href="src/css/main.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" href="src/css/login.css" type="text/css">
     <title>Pro State Bank</title>
 </head>
 <body>
@@ -53,12 +52,17 @@ if(!empty($_SESSION["logged"])) {
 </body>
 </html>
 <footer class="login-footer">
-    <a href="/">© Pro State Bank 2022</a>
-    <a href="/profile">Profile</a>
-    <a href="/accounts">Accounts</a>
-    <a href="/money_transfer">Money transfer</a>
-    <a href="/history">History</a>
-    <a href="/fiscles">Fiscleees!</a>
+    <a href="/">© ProState Bank</a>
+    <?php
+    if(!empty($_SESSION["logged"])) {
+        echo "<a href='/profile'>Profile</a>";
+        echo "<a href='/accounts'>Accounts</a>";
+        echo "<a href='/money_transfer'>Transfer</a>";
+        echo "<a href='/history'>History</a>";
+        echo "<a href='/request'>Sūtīt ziņojumu</a>";
+    }
+    ?>
+    <a href="/faq">FAQ</a>
 </footer>
 </body>
 </html>

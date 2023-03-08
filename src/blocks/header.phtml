@@ -21,26 +21,15 @@
         </div>
         <nav class="nav">
             <ul class="header-menu">
-                <li>
-                    <a href="profile" class="active">Profile</a>
-                </li>
-                <li>
-                    <a href="accounts" class="active">Accounts</a>
-                </li>
-                <li>
-                    <a href="money_transfer" class="active">Transfer</a>
-                </li>
-                <li>
-                    <a href="history" class="active">History</a>
-                </li>
-                <li>
-                <a href="fiscles" class="active">Fiscleees!</a> 
-                </li>
                 <?php
                 if(empty($_SESSION["logged"])) {
                     echo "<li><a href='/login' class='active'>Autorizēties</a></li>";
                     echo "<li><a href='/signup' class='active'>Reģistrēties</a></li>";
                 } else {
+                    echo "<li><a href='profile' class='active'>Profile</a></li>";
+                    echo "<li><a href='accounts' class='active'>Accounts</a></li>";
+                    echo "<li><a href='money_transfer' class='active'>Transfer</a></li>";
+                    echo "<li><a href='history' class='active'>History</a></li>";
                     if($_SESSION['admin'] > 0) {
                         echo "<li><a href='/admin' class='active'>Administrācija</a></li>";
                         echo "<li><a href='/logout' class='active'>Iziet</a></li>";
